@@ -1,0 +1,84 @@
+.comment {
+  margin: 2rem 0rem;
+
+  &-primary-heading {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $color-primary;
+    padding-bottom: 1rem;
+  }
+
+  &-rating {
+    font-size: 1.5rem;
+    color: $color-gold;
+
+    &-container {
+      padding-bottom: 1rem;
+    }
+  }
+
+  &-review-input {
+    font-size: 1rem;
+    border: solid 2px $color-primary;
+    outline: none;
+    padding: 1.5rem;
+    width: 80%;
+    border-radius: 5px;
+    transition: all 0.2s;
+    &:hover {
+      background-color: lightgray;
+    }
+
+    &:focus {
+      background-color: lightgray;
+    }
+  }
+
+  &-review-button-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &-user-reviews-main {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    margin: 1rem 0rem;
+    border: solid 1px lightgray;
+    border-radius: 5px;
+    padding: 0rem 1rem;
+    position: relative;
+  }
+
+  &-user-delete {
+    position: absolute;
+    top: 23%;
+    font-weight: 800;
+    padding: 1rem 1rem;
+    border-radius: 5px;
+    background-color: red;
+    color: $color-white;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      color: red;
+      background-color: $color-white;
+      border: solid 1px red;
+    }
+  }
+
+  &-user-name {
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding-bottom: 0.5rem;
+  }
+
+  &-user-rating {
+    color: $color-gold;
+    padding-bottom: 0.5rem;
+  }
+
+  &-user-review {
+    padding-bottom: 0.5rem;
+  }
+}

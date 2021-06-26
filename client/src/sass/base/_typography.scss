@@ -1,0 +1,35 @@
+.a-white {
+  text-decoration: none;
+  color: white;
+}
+
+.a-blue {
+  color: $color-primary;
+  transition: all 0.1s;
+  &:hover {
+    color: $color-primary-light;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.primary-heading {
+  font-size: 1.5rem;
+  color: $color-primary;
+  margin-top: 1rem;
+}
+
+.secondary-heading {
+  font-size: 1rem;
+  color: $color-primary;
+  margin-top: 1rem;
+}
+
+.main-heading {
+  color: $color-primary;
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 2rem 0rem;
+}

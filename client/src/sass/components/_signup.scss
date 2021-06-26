@@ -1,0 +1,106 @@
+/* Full-width input fields */
+.sign-up-input[type="text"],
+.sign-up-input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border: solid 1px transparent;
+}
+
+.sign-up-input[type="text"]:focus,
+.sign-up-input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+  border: solid 1px $color-primary;
+}
+
+.login-toggle {
+  background-color: white;
+  color: $color-primary;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  transition: all 0.2s;
+}
+
+.login-toggle:hover {
+  background-color: lightgray;
+}
+
+.cancelbtn {
+  padding: 12px 20px;
+  background-color: #f44336;
+}
+
+.cancelbtn,
+.signupbtn {
+  float: left;
+  width: 100%;
+}
+
+.signup-container {
+  padding: 16px;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding-top: 50px;
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary
+  );
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  width: 80%;
+  border: solid 2px $color-primary;
+
+  box-shadow: 1rem 1rem 1rem rgba($color-black, 0.3);
+}
+
+.sign-up-hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media screen and (max-width: 300px) {
+  .cancelbtn,
+  .signupbtn {
+    width: 100%;
+  }
+}

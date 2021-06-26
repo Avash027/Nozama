@@ -1,0 +1,81 @@
+.product-add {
+  text-align: center;
+
+  &-label {
+    display: block;
+    font-size: 1.2rem;
+    letter-spacing: 0.5rem;
+    margin: 1rem 0rem;
+  }
+
+  &-input {
+    padding: 1rem 2rem;
+    width: 80%;
+    border-radius: 5px;
+    border: solid 1px $color-primary;
+    outline: none;
+
+    &:hover {
+      background-color: lightgray;
+    }
+
+    &:focus {
+      background-color: lightgray;
+    }
+  }
+
+  &-fileinput {
+    display: block;
+
+    font-size: 1.2rem;
+    margin: 1rem auto;
+  }
+}
+
+.toggleBar {
+  display: block;
+  text-align: center;
+  margin: 2rem;
+
+  color: $color-primary;
+  font-weight: 600;
+  font-size: 1.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: lightgray;
+  }
+}
+
+.product-delete {
+  &-item {
+    border: solid 2px $color-primary;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 3fr 3fr 1fr;
+    padding: 3rem 0rem;
+    margin: 2rem auto;
+    width: 80%;
+  }
+
+  &-button {
+    text-align: center;
+    font-size: 1.5rem;
+    color: red;
+    border-radius: 5px;
+    font-weight: 800;
+    border: solid 1px red;
+    margin-right: 5rem;
+    padding: 0.5rem 0.5rem;
+    margin-top: -1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      color: $color-white;
+      background-color: red;
+    }
+  }
+}

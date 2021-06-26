@@ -1,0 +1,61 @@
+.shipping {
+  &-container {
+    padding-left: 3rem;
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+  }
+
+  &-label {
+    font-size: 1.2rem;
+    padding-right: 1rem;
+    letter-spacing: 0.1rem;
+  }
+
+  &-input {
+    margin: 1rem;
+    padding: 1rem 2rem;
+    border: solid 1px $color-primary;
+    outline: none;
+    transition: all 0.2s;
+    border-radius: 5px;
+
+    &:focus {
+      background-color: lightgray;
+    }
+  }
+
+  &-billing-layout {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+  }
+
+  &-item-name-heading {
+    color: $color-primary;
+    padding-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  &-item-qty-heading {
+    color: $color-primary;
+    padding-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  &-item-price-heading {
+    color: $color-primary;
+    padding-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  &-itemname {
+    padding-bottom: 0.5rem;
+  }
+  &-itemqty {
+    padding-bottom: 0.5rem;
+  }
+  &-itemprice {
+    padding-bottom: 0.5rem;
+  }
+}

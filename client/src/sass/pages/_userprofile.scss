@@ -1,0 +1,19 @@
+.user-profile {
+  margin: 2rem auto;
+  height: 70vh;
+  width: 80%;
+
+  border-radius: 10px;
+  border: solid 2px $color-primary;
+  text-align: center;
+
+  &-input {
+    font-family: inherit;
+    border-radius: 5px;
+    padding: 0.5rem 3rem;
+    margin: 1rem;
+
+    border: solid 1px $color-primary;
+    outline: none;
+  }
+}

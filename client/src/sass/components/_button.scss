@@ -1,0 +1,37 @@
+.button {
+  text-decoration: none;
+  color: $color-white;
+  background-color: $color-primary;
+  padding: 0.5rem 2.5rem;
+  border-radius: 30px;
+  font-size: 1.3rem;
+  border: solid 1px transparent;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    border: solid 1px $color-primary;
+    background-color: $color-white;
+    color: $color-primary;
+    transform: scale(1.01);
+  }
+}
+
+.warning-button {
+  text-decoration: none;
+  color: $color-white;
+  background-color: red;
+  padding: 0.5rem 2.5rem;
+  border-radius: 30px;
+  font-size: 1.3rem;
+  border: solid 1px transparent;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    border: solid 1px red;
+    background-color: $color-white;
+    color: red;
+    transform: scale(1.01);
+  }
+}

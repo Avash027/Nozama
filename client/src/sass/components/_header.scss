@@ -1,0 +1,174 @@
+.header {
+  height: 4.5rem;
+  width: 100%;
+  background-color: $color-primary;
+  box-shadow: 1rem 0rem 1rem rgba($color-black, 60%);
+  position: relative;
+
+  &-logout {
+    color: $color-white;
+    padding-left: 1rem;
+  }
+
+  &-left {
+    position: relative;
+  }
+
+  &-logo {
+    position: absolute;
+    margin-left: 0.7rem;
+    color: $color-white;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
+  }
+
+  &-right {
+    position: absolute;
+    margin-left: 66%;
+    top: 27%;
+    color: $color-white;
+
+    &-signin {
+      padding-left: 1rem;
+    }
+
+    &-add {
+      padding-right: 1rem;
+    }
+  }
+
+  &-input {
+    display: inline;
+    position: absolute;
+    margin-left: 9rem;
+    margin-top: 0.7rem;
+    font-family: inherit;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    padding: 0.5rem 2rem;
+  }
+
+  &-search {
+    color: $color-primary;
+    background-color: $color-white;
+    padding: 0.1rem 0.6rem;
+    position: absolute;
+    margin-left: 25rem;
+    margin-top: 0.7rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  &-search:hover {
+    color: $color-white;
+    background-color: $color-primary;
+  }
+}
+
+@media only screen and (max-width: 882px) {
+  .header-right {
+    margin-left: 80%;
+  }
+}
+
+@media only screen and (max-width: 882px) {
+  .header-right {
+    margin-left: 75%;
+  }
+}
+
+@media only screen and (max-width: 606px) {
+  .header {
+    height: 15rem;
+  }
+
+  .header-right {
+    top: 68%;
+    left: -44%;
+  }
+
+  .header-left {
+    left: 15%;
+  }
+}
+
+@media only screen and (max-width: 548px) {
+  .header-left {
+    left: 12%;
+  }
+}
+
+@media only screen and (max-width: 882px) {
+  .header {
+    height: 7rem;
+    width: 115%;
+  }
+}
+
+@media only screen and (max-width: 512px) {
+  .header-left {
+    left: 9%;
+  }
+}
+
+@media only screen and (max-width: 494px) {
+  .header-left {
+    left: 6%;
+  }
+}
+
+@media only screen and (max-width: 482px) {
+  .header-left {
+    left: 3%;
+  }
+}
+
+@media only screen and (max-width: 482px) {
+  .header {
+    height: 12rem;
+
+    &-input {
+      margin-left: 5rem;
+      margin-top: 4.7rem;
+    }
+
+    &-search {
+      margin-left: 22rem;
+      margin-top: 4.6rem;
+    }
+
+    &-logo {
+      margin-left: 9.7rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .header-left {
+    left: 1%;
+  }
+}
+
+@media only screen and (max-width: 408px) {
+  .header {
+    height: 12rem;
+
+    &-input {
+      margin-left: 1rem;
+      margin-top: 4.7rem;
+    }
+
+    &-search {
+      margin-left: 18rem;
+      margin-top: 4.6rem;
+    }
+
+    &-logo {
+      margin-left: 6.7rem;
+    }
+  }
+}

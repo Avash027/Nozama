@@ -1,0 +1,103 @@
+.cart {
+  margin-top: 2rem;
+
+  &-item {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    height: 20vh;
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+    border: solid 1px $color-primary;
+    margin-bottom: 2rem;
+
+    &-container {
+      height: 19.7vh;
+
+      &-img {
+        height: inherit;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+    }
+
+    &-info {
+      display: grid;
+      grid-template-columns: 4fr 2fr;
+
+      &-left {
+        margin-left: -2rem;
+      }
+
+      &-right {
+        display: grid;
+        grid-template-rows: 1fr 2fr;
+        border-radius: 5px;
+        text-align: center;
+
+        &-up {
+          margin-top: 1.5rem;
+
+          &-select {
+            width: 80%;
+            background-color: $color-white;
+            border-radius: 5px;
+            border: solid 1px $color-black;
+          }
+
+          &-select:focus {
+            border: solid 1px $color-primary;
+          }
+        }
+
+        &-down {
+          margin-top: 1.5rem;
+          font-size: 1.5rem;
+
+          &-delete {
+            color: $color-white;
+            background-color: red;
+            padding: 1rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 10px;
+          }
+
+          &-delete:hover {
+            color: red;
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  &-details {
+    display: grid;
+    color: $color-white;
+    background-color: $color-primary;
+    grid-template-columns: 4fr 1fr;
+    height: 20vh;
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+    border: solid 1px #1d4ed8;
+    margin-bottom: 2rem;
+
+    &-left {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      padding-left: 1rem;
+      margin-top: 1rem;
+      font-size: 1.5rem;
+    }
+
+    &-right {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      padding-left: 1rem;
+      margin-top: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+}

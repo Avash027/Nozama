@@ -1,0 +1,61 @@
+.admin-panel {
+  width: 80%;
+  height: 40vh;
+  border: solid 2px $color-primary;
+  margin: 2rem auto;
+  border-radius: 5px;
+  display: grid;
+  grid-template-rows: 4fr 2fr;
+
+  &-element-up {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    padding-top: 0.5rem;
+  }
+
+  &-names {
+    color: $color-primary-dark;
+    font-weight: 600;
+  }
+
+  &-element-down {
+    background-color: $color-primary;
+    color: $color-white;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  &-shipping-address {
+    padding: 0.5rem 0.5rem;
+  }
+
+  &-user {
+    padding: 0.5rem 0.5rem;
+  }
+
+  &-orderedAt {
+    padding: 0.5rem 0.5rem;
+  }
+
+  &-delivered {
+    padding: 0.5rem 0.5rem;
+  }
+
+  &-delivery-container {
+    text-align: center;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    border: solid 1px $color-white;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: lightgreen;
+      color: $color-black;
+    }
+  }
+
+  &-delivery-date {
+    padding: 0.5rem 0.5rem;
+  }
+}
