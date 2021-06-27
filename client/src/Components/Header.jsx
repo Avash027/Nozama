@@ -1,20 +1,21 @@
-import React from "react";
+import React,{useState} from "react";
 import {useSelector , useDispatch} from "react-redux";
 import { logout } from "../actions/userActions";
 
 const Header = () => {
+
+
 
   const dispatch = useDispatch()
   const userLogin = useSelector(state => state.userLogin);
   const {userInfo} = userLogin;
 
 
-  const logoutUser = ()=>{
+  const [search, setSearch] = useState("");
 
-    
+  const logoutUser = ()=>{
     dispatch(logout());
   }
-
 
 
 
@@ -31,11 +32,16 @@ const Header = () => {
           type="text"
           placeholder="Phones,Laptops"
           className="header-input"
+          value={search}
+          onChange={e=>setSearch(e.target.value)}
         ></input>
 
-        <div className="header-search">
+        <a 
+        href={`/search/${encodeURI(search)}`}
+        className="header-search"
+        >
           <i className="fas fa-search"></i>
-        </div>
+        </a>
       </div>
 
       <div className="header-right">

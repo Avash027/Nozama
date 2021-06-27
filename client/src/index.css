@@ -738,3 +738,21 @@ a {
   .product-delete-button:hover {
     color: white;
     background-color: red; }
+
+.search-item {
+  height: 20vh;
+  width: 80%;
+  margin: 2rem auto;
+  display: grid;
+  border: solid 2px #1d4ed8;
+  border-radius: 5px;
+  grid-template-columns: 4fr 4fr 1fr; }
+  .search-item-image-container {
+    height: inherit;
+    width: inherit; }
+  .search-item-image {
+    height: 98%;
+    width: inherit;
+    border-radius: 5px;
+    margin-left: -0.05rem;
+    margin-top: -0.05rem; }
