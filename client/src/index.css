@@ -746,7 +746,9 @@ a {
   display: grid;
   border: solid 2px #1d4ed8;
   border-radius: 5px;
-  grid-template-columns: 4fr 4fr 1fr; }
+  grid-template-columns: 4fr 4fr 1fr;
+  transition: all 0.2s;
+  cursor: pointer; }
   .search-item-image-container {
     height: inherit;
     width: inherit; }
@@ -756,3 +758,16 @@ a {
     border-radius: 5px;
     margin-left: -0.05rem;
     margin-top: -0.05rem; }
+  .search-item-name {
+    margin: auto -4rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e3a8a; }
+  .search-item-price {
+    margin: auto -5rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e3a8a; }
+  .search-item:hover {
+    transform: scale(1.01);
+    background-color: lightgray; }

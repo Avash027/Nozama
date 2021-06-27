@@ -27,7 +27,7 @@ function App() {
           <Route path="/login" component={SignUpForm} exact />
           <Route path="/user/profile" component={UserProfile} exact />
           <Route path="/shipping" component={ShippingPage} exact />
-          <Route path="/search/:query" component={SearchPage} exact></Route>
+          <Route path="/search/:query?" component={SearchPage} exact></Route>
           {userInfo && userInfo.isAdmin && (
             <Route path="/add" component={ProductAdd} exact />
           )}

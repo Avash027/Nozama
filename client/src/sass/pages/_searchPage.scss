@@ -6,6 +6,8 @@
   border: solid 2px $color-primary;
   border-radius: 5px;
   grid-template-columns: 4fr 4fr 1fr;
+  transition: all 0.2s;
+  cursor: pointer;
 
   &-image-container {
     height: inherit;
@@ -18,5 +20,24 @@
     border-radius: 5px;
     margin-left: -0.05rem;
     margin-top: -0.05rem;
+  }
+
+  &-name {
+    margin: auto -4rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: $color-primary-dark;
+  }
+
+  &-price {
+    margin: auto -5rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: $color-primary-dark;
+  }
+
+  &:hover {
+    transform: scale(1.01);
+    background-color: lightgray;
   }
 }
