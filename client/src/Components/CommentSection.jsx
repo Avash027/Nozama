@@ -1,9 +1,7 @@
 import React,{useState,useEffect} from 'react'
-import Rating from './Rating';
 import {useSelector} from "react-redux";
-import axios from 'axios';
-
-
+import {_deleteReviewSubmitHandler, _reviewSubmitHandlerUtil} from '../utils/CommentAPI';
+import CommentElement from './CommentElement';
 
 const CommentSection = ({productID , setComment,reviews}) => {
 
@@ -22,54 +20,37 @@ const CommentSection = ({productID , setComment,reviews}) => {
     }, [])
 
     const reviewSubmitHandler = async()=>{
-        const config = {
-            headers: {
-              "Content-Type": "application/json",
-              authorization: "Bearer " + userInfo.token,
-            },
-          };
+        const [data , error] =  await _reviewSubmitHandlerUtil(
+            userInfo.token,
+            productID,
+            userInfo.name,
+            rating,
+            review,
+            userInfo._id
+        )
 
+        if(data){
+            setComment(data)
+            setUserPresent(true);
+            return
+        }
 
-          const body = {
-              productID,
-              userReview:{
-                  name:userInfo.name,
-                  rating,
-                  comment:review,
-                  user:userInfo._id
-              }
-          }
-
-
-          const {data} = await axios.post("/api/products/reviews",body,config);
-
-          setComment(data)
-          setUserPresent(true);
+        if(error) alert("Comment could not be processed!!");
           
     }
 
 
     const deleteReviewSubmitHandler = async()=>{
-        
-        const config = {
-            "headers": {
-              "Content-Type": "application/json",
-              authorization: "Bearer " + userInfo.token,
-            },
-          };
+        const [data,error] = await _deleteReviewSubmitHandler(userInfo.token , productID)  
 
-          const body ={
-              productID,
-              
-          }
-
-          
-
-          const {data} = await axios.post("/api/products/deletereviews",body,config)
-
+          if(data){
           setComment(data)
           setUserPresent(false)
-    }
+          }
+          else{
+              alert("Sorry could not delete the comment right now")
+          }
+}
     
 
     for(let i =1;i<=5;i++)
@@ -130,37 +111,11 @@ const CommentSection = ({productID , setComment,reviews}) => {
             
             <div className="comment-user-reviews-container">
                 {reviews.length!==0 && reviews.map(userReview=>(
-                    <div className="comment-user-reviews-main">
-                        <div className="comment-user-left">
-                            <div className="comment-user-name">
-                                {userReview.name}
-                            </div>
-                            <div className="comment-user-rating">
-                                <Rating value={userReview.rating} ></Rating>
-                            </div>
-                            <div className="comment-user-review">
-                                {userReview.comment}
-                            </div>
-                            </div>
-                        <div
-                        className="comment-user-right"
-                        onClick={deleteReviewSubmitHandler}
-                        >
-                            <span className="comment-user-delete">&times;</span>
-                        </div>
-                    </div>
+                    <CommentElement 
+                    userReview={userReview} 
+                    deleteReviewSubmitHandler={deleteReviewSubmitHandler}/>
                 ))}
             </div>
-
-           
-           
-            
-            
-
-
-            
-
-
         </div>
     )
 }
