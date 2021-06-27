@@ -26,3 +26,5 @@ yarn-error.log*
 
 seeder.js
 data
+.gitignore
+package-lock.json
