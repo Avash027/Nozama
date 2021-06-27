@@ -1,5 +1,6 @@
 import AsyncHandler from "express-async-handler";
 import Product from "../models/productModel.js";
+import updateRating from "../utils/updateRating.js";
 
 /***
 @desc Sends all products
@@ -12,7 +13,7 @@ const getProducts = AsyncHandler(async (req, res) => {
 });
 
 /***
- *  @desc Sends one product 
+ *   @desc Sends one product 
     @route GET /api/products/:id
     @access Public
 **/
@@ -27,6 +28,12 @@ const getProductByID = AsyncHandler(async (req, res) => {
   }
 });
 
+/***
+@desc Add new Products by admin 
+@route GET /api/products/add
+@access Private(Admin only)
+**/
+
 const addProducts = async (req, res) => {
   if (!req.user.isAdmin) res.status(401).send({ Error: "Unauthorized Access" });
 
@@ -37,6 +44,12 @@ const addProducts = async (req, res) => {
   if (newProduct) res.status(201).send(newProduct);
   else res.status(401).send({ Error: "Server Error" });
 };
+
+/***
+@desc Add reviews of a product 
+@route POST /api/products/reviews
+@access Private
+**/
 
 const addReviews = AsyncHandler(async (req, res) => {
   const { productID, userReview } = req.body;
@@ -53,9 +66,14 @@ const addReviews = AsyncHandler(async (req, res) => {
   res.status(200).send(updatedProduct);
 });
 
+/***
+@desc Delete reviews of a product 
+@route POST /api/products/deletereviews
+@access Private
+**/
+
 const deleteReviews = AsyncHandler(async (req, res) => {
   const { productID } = req.body;
-
   const userID = req.user._id;
 
   let product = await Product.findById(productID);
@@ -69,15 +87,19 @@ const deleteReviews = AsyncHandler(async (req, res) => {
   }
 
   product.reviews.splice(userCommentIndex, 1);
-
   product.numReviews = product.reviews.length;
-
   product.rating = updateRating(product.reviews, product.numReviews);
 
   const updatedProduct = await product.save();
 
   res.status(200).send({ updatedProduct });
 });
+
+/***
+@desc Update stock of a product 
+@route POST /api/products/updateQty
+@access Private
+**/
 
 const updateQty = AsyncHandler(async (req, res) => {
   const { updateItems } = req.body;
@@ -94,28 +116,21 @@ const updateQty = AsyncHandler(async (req, res) => {
   res.status(201).send({});
 });
 
+/***
+@desc Delete product from database 
+@route POST /api/products/delete
+@access Private(Admin only)
+**/
+
 const deleteProduct = AsyncHandler(async (req, res) => {
   if (!req.user.isAdmin) res.status(401).send({});
-
   const { productID } = req.body;
 
   const result = await Product.findByIdAndDelete(productID);
-
   res.status(201).send({ result });
 });
 
 //TODO: Add to utils folder
-const updateRating = (reviews, numReviews) => {
-  let totalRating = 0;
-
-  if (numReviews === 0) return 0;
-
-  for (let i = 0; i < numReviews; i++) {
-    totalRating += reviews[i].rating;
-  }
-
-  return totalRating / numReviews;
-};
 
 export {
   getProductByID,

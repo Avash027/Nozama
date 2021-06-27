@@ -1,6 +1,11 @@
 import AsyncHandler from "express-async-handler";
 import Order from "../models/orderModel.js";
 
+/***
+@desc Place orders 
+@route POST /api/orders
+@access Private
+**/
 export const placeOrders = AsyncHandler(async (req, res) => {
   const { orderItem } = req.body;
 
@@ -14,6 +19,12 @@ export const placeOrders = AsyncHandler(async (req, res) => {
     });
   }
 });
+
+/***
+@desc Get past orders orders 
+@route GET /api/orders
+@access Private
+**/
 
 export const getOrders = AsyncHandler(async (req, res) => {
   let OrdersSummaries;

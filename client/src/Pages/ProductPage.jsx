@@ -6,17 +6,14 @@ import Loading from "../Components/Loading";
 import Error from "../Components/Error"
 import CommentSection from "../Components/CommentSection";
 
-//match gets the id from the link
 const ProductPage = ({ history, match }) => {
   
   const [qty, setQty] = useState(1);
   const [comment, setComment] = useState({});
 
   const dispatch = useDispatch();
-  //use the name mentioned in the store.js
   const productDetails = useSelector((state) => state.productDetails);
 
-  //TODO: Add loading and todo
   const {loading,error, product } = productDetails;
 
   useEffect(() => {

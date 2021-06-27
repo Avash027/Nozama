@@ -1,25 +1,29 @@
 import {
-  CART_ADD,
-  CART_REMOVE,
-  CART_REMOVE_ALL,
+  ADD_ITEM_TO_CART,
+  REMOVE_ITEM_FROM_CART,
+  REMOVE_ITEM_FROM_CART_ALL,
 } from "../constants/cartConstants";
+
+/**
+ * IF item already present in the cart update the quantity else add the item to cart
+ */
 
 export const cartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
-    case CART_ADD:
+    case ADD_ITEM_TO_CART:
       const item = action.payload; //Item to be added
 
       //If item already in cart
 
-      const itemExsist = state.cartItems.find((itr) => {
-        return itr.product === item.product;
+      const itemExsist = state.cartItems.find((itemInCart) => {
+        return itemInCart.product === item.product;
       });
 
       if (itemExsist) {
         return {
           ...state,
-          cartItems: state.cartItems.map((itr) =>
-            itr.product === itemExsist.product ? item : itr
+          cartItems: state.cartItems.map((itemInCart) =>
+            itemInCart.product === itemExsist.product ? item : itemInCart
           ), //If item exsist return the exsisting item or return the new item
         };
       } else {
@@ -28,7 +32,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
           cartItems: [...state.cartItems, item],
         };
       }
-    case CART_REMOVE:
+    case REMOVE_ITEM_FROM_CART:
       return {
         ...state,
         cartItems: state.cartItems.filter(
@@ -36,7 +40,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
         ),
       };
 
-    case CART_REMOVE_ALL:
+    case REMOVE_ITEM_FROM_CART_ALL:
       return { cartItems: [] };
     default:
       return state;

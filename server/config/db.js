@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { ERROR, SUCCESS } from "../utils/chalk.js";
 
 const connectDB = async () => {
   try {
@@ -7,11 +8,9 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useCreateIndex: true,
     });
-
-    console.log(`MongoDB connected : ${con.connection.host}`);
+    SUCCESS(`MongoDB connected : ${con.connection.host}`);
   } catch (error) {
-    console.log(`Error ${error.message}`);
-
+    ERROR(`Error ${error.message}`);
     process.exit(0);
   }
 };

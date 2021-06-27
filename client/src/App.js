@@ -31,7 +31,6 @@ function App() {
           {userInfo && userInfo.isAdmin && (
             <Route path="/add" component={ProductAdd} exact />
           )}
-          {/**? at the end to make id optional */}
         </div>
       </main>
       <Footer />

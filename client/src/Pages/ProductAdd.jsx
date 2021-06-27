@@ -4,8 +4,11 @@ import axios from "axios"
 import Error from '../Components/Error';
 import Loading from '../Components/Loading';
 import { listProducts } from '../actions/productActions';
+import { _AddProductSubmitHandler, _DeleteProductHandler } from '../utils/ProductAdd';
+import AddProduct from '../Components/AddProduct';
+import DeleteProductItem from '../Components/DeleteProductItem';
 
-
+//TODO : Check the add and delete handler once
 const ProductAdd = ({history}) => {
 
     const dispatch =useDispatch();
@@ -15,10 +18,6 @@ const ProductAdd = ({history}) => {
 
      const productList = useSelector((state) => state.productList);
      const { loading, error, products } = productList;
-
-
-
-
 
     const [name, setName] = useState("");
     const [brand, setBrand] = useState("");
@@ -34,49 +33,42 @@ const ProductAdd = ({history}) => {
         dispatch(listProducts()); 
     }, [dispatch,comment])
 
-    const submitHandler = async ()=>{
-
-        try {
-            const productToBeAdded ={
-                user:userInfo._id,
+    const AddProductSubmitHandler = async ()=>{
+            const [data,error] = await _AddProductSubmitHandler(
+                userInfo._id,
                 name,
-                image:files,
+                files,
                 brand,
                 category,
                 description,
-                reviews:[],
-                price: Number(price),
-                countInStock:Number(stock)
-            };
-    
-            console.log(productToBeAdded)
-    
-            const token = userInfo.token;
+                Number(price),
+                Number(stock)
+            )
             
-            const config = {
-                headers: {
-                  "Content-Type": "application/json",
-                  authorization: "Bearer " + token,
-                },
-              };
-    
-    
-            const {data} = await axios.post("/api/products/add",{productToBeAdded},config);
-            
-            console.log(data);
+            if(data){
             alert("Product added successfully");
             history.push("/add");
-    
-            
-        } catch (error) {
-            alert("There was some error "+error.message);
-        }
-       
-        
-
-
+            }
+            else if(error){
+                alert("Image too large .. Please try another image!!")
+            }
     }
 
+    const deleteProductHandler = async(productID)=>{
+        const token = userInfo.token;
+        
+        const [data,error] = await _DeleteProductHandler(token,productID);
+
+        if(data)
+        {
+            alert("Deletion successful");
+            setComment(data);
+        }
+        else if(error){
+            alert("Deletion unsuccessful");
+        }
+
+    }
 
     function convertImageToBase64(e){
         let file = e.target.files[0];
@@ -91,121 +83,28 @@ const ProductAdd = ({history}) => {
         }
     }
 
-    const deleteProductHandler = async(productID)=>{
-        const token = userInfo.token;
-        
-        const config = {
-            headers: {
-              "Content-Type": "application/json",
-              authorization: "Bearer " + token,
-            },
-          };
-
-          const body = {
-              productID,
-          }
-
-          const {data} = await axios.post("/api/products/delete" , body,config);
-          console.log(data)
-          setComment(data);
-
-    }
-
+ 
 
     let elemToBeRendered;
 
     if(toaddProduct){
-        elemToBeRendered = (<div className="product-add" >
-       
-        <label className="product-add-label">Name</label>
-        <br/>
-        <input 
-        type="text" 
-        className="product-add-input" 
-        placeholder="Product Name"
-        value={name}
-        onChange={(e)=>setName(e.target.value)}
-        required
+        elemToBeRendered = 
+        <AddProduct
+        name={name}
+        setName={setName}
+        brand={brand}
+        setBrand = {setBrand}
+        category={category}
+        setCategory={setCategory}
+        description={description}
+        setDescription={setDescription}
+        price={price}
+        setPrice={setPrice}
+        stock={stock}
+        setStock={setStock}
+        convertImageToBase64={convertImageToBase64}
+        AddProductSubmitHandler={AddProductSubmitHandler}
         />
-        
-        <br />
-
-        <label className="product-add-label">Brand</label>
-        <br/>
-        <input 
-        type="text" 
-        className="product-add-input" 
-        placeholder="Product Brand"
-        value={brand}
-        onChange={(e)=>setBrand(e.target.value)}
-        required
-        />
-        <br />
-
-        <label className="product-add-label">Category</label>
-        <br/>
-        <input 
-        type="text" 
-        className="product-add-input" 
-        placeholder="Product Category"
-        value={category}
-        onChange={(e)=>setCategory(e.target.value)}
-        required
-        />
-        <br />
-
-        <label className="product-add-label">Description</label>
-        <br/>
-        <input 
-        type="text" 
-        className="product-add-input" 
-        placeholder="Product Description"
-        value={description}
-        onChange={(e)=>setDescription(e.target.value)}
-        required
-        />
-        <br />
-
-        <label className="product-add-label">Price</label>
-        <br/>
-        <input 
-        type="text" 
-        className="product-add-input" 
-        placeholder="Product Price" 
-        value={price}
-        onChange={(e)=>setPrice(e.target.value)}
-        required
-        />
-        <br />
-
-        <label className="product-add-label">Current Stock</label>
-        <br/>
-        <input 
-        type="text" 
-        className="product-add-input" 
-        placeholder="Product Stock"
-        value={stock}
-        onChange={(e)=>setStock(e.target.value)}
-        required
-        />
-        <br />
-
-
-        <input
-        className="product-add-fileinput"
-        type="file" 
-        name="Upload the image" 
-        id="imguploader"
-        onChange={convertImageToBase64}
-        />
-        
-        <button
-        
-        onClick={submitHandler}
-        className="button button-primary">
-            Add the product
-        </button>  
-    </div>)
     }
     else if(loading) elemToBeRendered=<Loading></Loading>
     else if(error) elemToBeRendered = <Error/>
@@ -213,25 +112,10 @@ const ProductAdd = ({history}) => {
         elemToBeRendered = (
             <div className="product-delete">
                 {products.map(product=>(
-                    <div
-                    className="product-delete-item"
-                    key={product._id}
-                    >
-                        <div className="product-delete-name">
-                            {product.name}
-                        </div>
-                        <div className="product-delete-id">
-                            {product._id}
-                        </div>
-                        <div
-                        className="product-delete-button-container"
-                        onClick={e=>deleteProductHandler(product._id)}
-                        >
-                            <div className="product-delete-button">
-                            &times;
-                            </div>
-                        </div>
-                    </div>
+                    <DeleteProductItem
+                    product={product}
+                    deleteProductHandler={deleteProductHandler}
+                    />
                 ))}
             </div>
         )

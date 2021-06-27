@@ -16,7 +16,7 @@ const SignUpForm = ({history , location}) => {
   const dispatch = useDispatch()
   const userLogin = useSelector(state=>state.userLogin);
 
-  //Todo: Add loading and error
+  //TODO: Add loading and error
   const {loading,error, userInfo} = userLogin;
 
 
@@ -77,8 +77,6 @@ const SignUpForm = ({history , location}) => {
       submitHandlerForLogin={submitHandlerForLogin}
     />
   }
-
-
     return (
       <>{elemToBeRendered}</>
     )

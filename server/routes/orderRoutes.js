@@ -3,7 +3,7 @@ import {
   placeOrders,
   getOrders,
   updateOrderStatus,
-} from "../controllers/placeOrders.js";
+} from "../controllers/orderControllers.js";
 import validator from "../middleware/authMiddleware.js";
 const router = express.Router();
 

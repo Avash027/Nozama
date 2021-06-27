@@ -4,19 +4,15 @@ import { addToCart, removeFromCart } from "../actions/cartActions";
 import CartItem from "../Components/CartItem";
 import Loading from "../Components/Loading";
 
-
-
 const CartPage = ({ match, location, history }) => {
+  
   const productIDfromTheURL = match.params.id;
-
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
 
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
   const userLogin = useSelector(state=>state.userLogin)
-
- 
 
   const { cartItems } = cart;
 
@@ -27,7 +23,6 @@ const CartPage = ({ match, location, history }) => {
   }, [dispatch, productIDfromTheURL, qty]);
 
   const changeItemQuantity = (e, item) => {
-    console.log(e.target.value);
     dispatch(addToCart(item.product, Number(e.target.value)));
   };
 

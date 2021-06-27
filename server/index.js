@@ -5,6 +5,7 @@ import { NotFound, errorHandler } from "./middleware/error.js";
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import { SUCCESS } from "./utils/chalk.js";
 
 dotenv.config();
 
@@ -31,7 +32,7 @@ const PORT = process.env.PORT || 8000;
 
 app.listen(
   PORT,
-  console.log(
+  SUCCESS(
     `Sever Running in ${process.env.NODE_ENV} mode in ${process.env.PORT}`
   )
 );

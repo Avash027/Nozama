@@ -6,10 +6,9 @@ import Loading from "../Components/Loading";
 import Error from "../Components/Error";
 
 const HomePage = () => {
+  
   const dispatch = useDispatch();
-
   const productList = useSelector((state) => state.productList);
-
   const { loading, error, products } = productList;
 
   useEffect(() => {

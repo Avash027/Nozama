@@ -1,8 +1,11 @@
 import React ,{useState, useEffect} from 'react'
 import { useSelector,useDispatch} from 'react-redux'
 import { listProducts } from '../actions/productActions';
+
 import Error from '../Components/Error';
 import Loading from '../Components/Loading';
+import SearchItemElement from '../Components/SearchItemElement';
+import { _findProductsByName } from '../utils/SearchPageutil';
 
 
 const SearchPage = ({history, match}) => {
@@ -22,7 +25,7 @@ const SearchPage = ({history, match}) => {
    
     useEffect(() => {
     console.log(products)
-      const filteredProducts = findProductsByName(products , match.params.query);
+      const filteredProducts = _findProductsByName(products , match.params.query);
       setSearchResults(filteredProducts)
     }, [products])
 
@@ -32,33 +35,14 @@ const SearchPage = ({history, match}) => {
     }
 
 
-    let searchedItems=<h1>Default</h1>;
+    let searchedItems;
 
     if(!products && error) searchedItems=<Error></Error>
     else if(products && products.length!==0){
         searchedItems=
-        searchResults.map(product=>(
-                                <div
-                                key={product._id}
-                                className="search-item"
-                                onClick={e=>redirectHandler(product._id)}
-                                >
-                                    <div className="search-item-image-container">
-                                        <img
-                                        src={product.image}
-                                        alt={product.brang}
-                                        className="search-item-image" />
-                                    </div>
-
-                                    <div className="search-item-name">
-                                        {product.name}
-                                    </div>
-
-                                    <div className="search-item-price">
-                                        Rs {product.price}
-                                    </div>
-                                </div>
-                            ))
+        searchResults.map(product=>(<SearchItemElement 
+            product={product} 
+            redirectHandler={redirectHandler}/>))
         
         
     }
@@ -70,22 +54,12 @@ const SearchPage = ({history, match}) => {
         searchedItems = <h2>No items found</h2>
     }
 
-
     return (
         <div>
             {searchedItems}
         </div>
     )
 
-}
-
-
-const findProductsByName = (products , query)=>{
-    
-    if(!query) return products
-    const queryRegEx = new RegExp(query);
-    return products.filter(product=>queryRegEx.test(product.name.toLowerCase()))
-
-}
+    }
 
 export default SearchPage
