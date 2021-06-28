@@ -6,7 +6,6 @@ import Loading from "../Components/Loading";
 import Error from "../Components/Error";
 
 const HomePage = () => {
-  
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
@@ -24,16 +23,15 @@ const HomePage = () => {
   } else {
     elementsToBeRendered = (
       <>
-    
-      <div className="home-container">
-        {products.map((product, idx) => {
-          return (
-            <div key={product._id} className="home-container-card-container">
-              <Product product={product} />
-            </div>
-          );
-        })}
-      </div>
+        <div className="home-container">
+          {products.map((product, idx) => {
+            return (
+              <div key={product._id} className="home-container-card-container">
+                <Product product={product} />
+              </div>
+            );
+          })}
+        </div>
       </>
     );
   }

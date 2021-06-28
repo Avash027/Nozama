@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import Rating from "./Rating";
 
 const Product = ({ product }) => {
-  
-
   return (
     <div className="product-card">
       <div className="product-card-container-img">
         <Link to={`./product/${product._id}`}>
-          <img src={product.image} className="product-card-img" alt={product.name}></img>
+          <img
+            src={product.image}
+            className="product-card-img"
+            alt={product.name}
+          ></img>
         </Link>
       </div>
 
@@ -24,7 +26,6 @@ const Product = ({ product }) => {
       </div>
 
       <div className="product-card-price">Price : Rs {product.price}</div>
-     
     </div>
   );
 };

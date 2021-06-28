@@ -5,14 +5,13 @@ import CartItem from "../Components/CartItem";
 import Loading from "../Components/Loading";
 
 const CartPage = ({ match, location, history }) => {
-  
   const productIDfromTheURL = match.params.id;
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
 
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
-  const userLogin = useSelector(state=>state.userLogin)
+  const userLogin = useSelector((state) => state.userLogin);
 
   const { cartItems } = cart;
 
@@ -31,8 +30,8 @@ const CartPage = ({ match, location, history }) => {
   };
 
   const checkoutHandler = () => {
-    if(userLogin) history.push("/shipping");
-    else history.push("/login")
+    if (userLogin) history.push("/shipping");
+    else history.push("/login");
   };
 
   let cartItemsToBeRendered;
@@ -44,11 +43,11 @@ const CartPage = ({ match, location, history }) => {
     bill += cartItems[i].qty * cartItems[i].price;
   }
 
-  bill = bill.toFixed(4)
+  bill = bill.toFixed(4);
 
-
-  if(!cartItems) cartItemsToBeRendered = <Loading></Loading>
-  else if (cartItems.length === 0) cartItemsToBeRendered = <h2>Cart Empty !!!</h2>;
+  if (!cartItems) cartItemsToBeRendered = <Loading></Loading>;
+  else if (cartItems.length === 0)
+    cartItemsToBeRendered = <h2>Cart Empty !!!</h2>;
   else {
     cartItemsToBeRendered = (
       <div>
@@ -62,7 +61,7 @@ const CartPage = ({ match, location, history }) => {
           </div>
         ))}
 
-        <hr style={{marginTop:"1rem" , marginBottom:"1rem"}}></hr>
+        <hr style={{ marginTop: "1rem", marginBottom: "1rem" }}></hr>
 
         <div className="cart-details">
           <div className="cart-details-left">
@@ -74,13 +73,14 @@ const CartPage = ({ match, location, history }) => {
             <div>Rs {bill}</div>
           </div>
         </div>
-        
-        
-        <button 
-        className="button button-primary" 
-        onClick={()=>checkoutHandler()}
-        style={{display:"block", margin:"2rem auto"}}
-        >Buy Now</button>
+
+        <button
+          className="button button-primary"
+          onClick={() => checkoutHandler()}
+          style={{ display: "block", margin: "2rem auto" }}
+        >
+          Buy Now
+        </button>
       </div>
     );
   }

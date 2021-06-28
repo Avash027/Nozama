@@ -3,24 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { ProductDetails } from "../actions/productActions";
 import Rating from "../Components/Rating";
 import Loading from "../Components/Loading";
-import Error from "../Components/Error"
+import Error from "../Components/Error";
 import CommentSection from "../Components/CommentSection";
 
 const ProductPage = ({ history, match }) => {
-  
   const [qty, setQty] = useState(1);
   const [comment, setComment] = useState({});
 
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
 
-  const {loading,error, product } = productDetails;
+  const { loading, error, product } = productDetails;
 
   useEffect(() => {
     dispatch(ProductDetails(match.params.id));
-  }, [dispatch, match,comment]);
-
-  
+  }, [dispatch, match, comment]);
 
   const addToCart = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`); //To redirect
@@ -30,13 +27,12 @@ const ProductPage = ({ history, match }) => {
 
   let elem;
 
-  if ((!product && !error) || loading) elem = <Loading></Loading>
-  else if(error) elem = <Error></Error>
+  if ((!product && !error) || loading) elem = <Loading></Loading>;
+  else if (error) elem = <Error></Error>;
   else {
-    
     for (let i = 1; i <= product.countInStock; i++) options.push(i);
 
-    elem =  (
+    elem = (
       <div className="product-main">
         <div className="product-main-container-img">
           <img
@@ -96,18 +92,16 @@ const ProductPage = ({ history, match }) => {
           </div>
         </div>
 
-        <CommentSection 
-        productID={match.params.id} 
-        reviews = {product.reviews}
-        setComment = {setComment} 
+        <CommentSection
+          productID={match.params.id}
+          reviews={product.reviews}
+          setComment={setComment}
         />
       </div>
     );
   }
 
-
-
-  return <>{elem}</>
+  return <>{elem}</>;
 };
 
 export default ProductPage;
