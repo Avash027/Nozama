@@ -39,32 +39,30 @@ a {
   width: 100%;
   background-color: #1d4ed8;
   box-shadow: 1rem 0rem 1rem black;
-  position: relative; }
+  display: flex;
+  justify-content: space-between; }
   .header-logout {
     color: white;
     padding-left: 1rem; }
   .header-left {
     position: relative; }
   .header-logo {
-    position: absolute;
-    margin-left: 0.7rem;
     color: white;
     font-size: 2rem;
     font-weight: 600;
-    margin-top: 0.2rem; }
+    margin-top: 0.2rem;
+    display: inline-block;
+    padding-right: 0.5rem;
+    padding-top: 0.1rem;
+    padding-left: 0.5rem; }
   .header-right {
-    position: absolute;
-    margin-left: 66%;
-    top: 27%;
+    margin-top: 1.3rem;
     color: white; }
     .header-right-signin {
       padding-left: 1rem; }
     .header-right-add {
       padding-right: 1rem; }
   .header-input {
-    display: inline;
-    position: absolute;
-    margin-left: 9rem;
     margin-top: 0.7rem;
     font-family: inherit;
     border-radius: 6px;
@@ -72,85 +70,25 @@ a {
     outline: none;
     padding: 0.5rem 2rem; }
   .header-search {
-    color: #1d4ed8;
-    background-color: white;
+    color: white;
     padding: 0.1rem 0.6rem;
     position: absolute;
-    margin-left: 25rem;
-    margin-top: 0.7rem;
+    margin-left: 0.4rem;
+    margin-top: 1rem;
     font-size: 1.5rem;
     border-radius: 10px;
     transition: all 0.2s;
     cursor: pointer; }
   .header-search:hover {
-    color: white;
-    background-color: #1d4ed8; }
+    color: #1d4ed8;
+    background-color: white; }
 
-@media only screen and (max-width: 882px) {
-  .header-right {
-    margin-left: 80%; } }
-
-@media only screen and (max-width: 882px) {
-  .header-right {
-    margin-left: 75%; } }
-
-@media only screen and (max-width: 606px) {
+@media only screen and (max-width: 885px) {
   .header {
-    height: 15rem; }
-  .header-right {
-    top: 68%;
-    left: -44%; }
-  .header-left {
-    left: 15%; } }
-
-@media only screen and (max-width: 548px) {
-  .header-left {
-    left: 12%; } }
-
-@media only screen and (max-width: 882px) {
-  .header {
-    height: 7rem;
-    width: 115%; } }
-
-@media only screen and (max-width: 512px) {
-  .header-left {
-    left: 9%; } }
-
-@media only screen and (max-width: 494px) {
-  .header-left {
-    left: 6%; } }
-
-@media only screen and (max-width: 482px) {
-  .header-left {
-    left: 3%; } }
-
-@media only screen and (max-width: 482px) {
-  .header {
-    height: 12rem; }
-    .header-input {
-      margin-left: 5rem;
-      margin-top: 4.7rem; }
-    .header-search {
-      margin-left: 22rem;
-      margin-top: 4.6rem; }
-    .header-logo {
-      margin-left: 9.7rem; } }
-
-@media only screen and (max-width: 460px) {
-  .header-left {
-    left: 1%; } }
-
-@media only screen and (max-width: 408px) {
-  .header {
-    height: 12rem; }
-    .header-input {
-      margin-left: 1rem;
-      margin-top: 4.7rem; }
-    .header-search {
-      margin-left: 18rem;
-      margin-top: 4.6rem; }
-    .header-logo {
-      margin-left: 6.7rem; } }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 6.5rem; } }
 
 .product-card {
   height: 29rem;
