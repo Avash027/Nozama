@@ -597,7 +597,6 @@ a {
     outline: none; }
 
 .shipping-container {
-  padding-left: 3rem;
   display: grid;
   grid-template-columns: 3fr 4fr; }
 
@@ -646,6 +645,13 @@ a {
 
 .shipping-itemprice {
   padding-bottom: 0.5rem; }
+
+@media only screen and (max-width: 890px) {
+  .shipping {
+    text-align: center; }
+    .shipping-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr; } }
 
 .product-add {
   text-align: center; }
