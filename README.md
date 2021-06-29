@@ -35,25 +35,36 @@
 
 ## Install this project
 
-> git clone https://github.com/Avash027/Nozama.git
-> cd directoryOfProject
+```
+git clone https://github.com/Avash027/Nozama.git
+```
+
+```
+cd directoryOfProject
+```
 
 To install all the dependencies
 
 Run the command in the root directory and the client directory
 
-> npm install
+```
+npm install
+```
 
 Now create a .env file in the root directory
 
-> NODE_ENV = (production/deployment as per the use)
-> PORT = (Port for the server)
-> MONGO_URI = (Database URL provided by the MonogDB atlas)
-> SECRET_KEY = (For JWT Authentication)
+```
+NODE_ENV = (production/deployment as per the use)
+PORT = (Port for the server)
+MONGO_URI = (Database URL provided by the MonogDB atlas)
+SECRET_KEY = (For JWT Authentication)
+```
 
 To run the project on the local machine
 
-> npm run dev
+```
+npm run dev
+```
 
 ## Some relevant links of the languages and tools I used
 
