@@ -40,7 +40,7 @@ git clone https://github.com/Avash027/Nozama.git
 ```
 
 ```
-cd directoryOfProject
+cd project
 ```
 
 To install all the dependencies

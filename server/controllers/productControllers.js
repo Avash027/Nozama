@@ -53,7 +53,6 @@ const addProducts = async (req, res) => {
 
 const addReviews = AsyncHandler(async (req, res) => {
   const { productID, userReview } = req.body;
-  console.log(productID, userReview);
 
   let product = await Product.findById(productID);
 
@@ -103,8 +102,6 @@ const deleteReviews = AsyncHandler(async (req, res) => {
 
 const updateQty = AsyncHandler(async (req, res) => {
   const { updateItems } = req.body;
-
-  console.log(updateItems);
 
   await updateItems.forEach(async (item) => {
     let product = await Product.findById(item.productID);

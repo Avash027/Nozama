@@ -7,8 +7,8 @@ import {
   _AddProductSubmitHandler,
   _DeleteProductHandler,
 } from "../utils/ProductAdd";
-import AddProduct from "../Components/AddProduct";
-import DeleteProductItem from "../Components/DeleteProductItem";
+import AddProduct from "../Components/AdminPanel/AddProduct";
+import DeleteProductItem from "../Components/AdminPanel/DeleteProductItem";
 
 //TODO : Check the add and delete handler once
 const ProductAdd = ({ history }) => {

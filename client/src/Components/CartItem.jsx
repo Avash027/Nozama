@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Rupees from "../utils/Rupees";
 
 const CartItem = ({ item, changeItemQuantity, removeFromCartHandler }) => {
   const [Qty, setQty] = useState(item.qty);
@@ -22,7 +23,7 @@ const CartItem = ({ item, changeItemQuantity, removeFromCartHandler }) => {
         <div className="cart-item-info">
           <div className="cart-item-info-left">
             <div className="primary-heading">{item.name}</div>
-            <div className="secondary-heading">Rs {item.price}</div>
+            <div className="secondary-heading">{Rupees(item.price)}</div>
           </div>
           <div className="cart-item-info-right">
             <div className="cart-item-info-right-up">

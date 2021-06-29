@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../actions/cartActions";
 import CartItem from "../Components/CartItem";
 import Loading from "../Components/Loading";
+import Rupees from "../utils/Rupees";
 
 const CartPage = ({ match, location, history }) => {
   const productIDfromTheURL = match.params.id;
@@ -70,7 +71,7 @@ const CartPage = ({ match, location, history }) => {
           </div>
           <div className="cart-details-right">
             <div>{totalProducts}</div>
-            <div>Rs {bill}</div>
+            <div>{Rupees(bill)}</div>
           </div>
         </div>
 

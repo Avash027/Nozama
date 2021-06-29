@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { removeFromCartAll } from "../actions/cartActions";
 import { _PlaceOrder, _updateProductsQty } from "../utils/ShippingPageAPI";
+import Rupees from "../utils/Rupees";
 
 //TODO Check shipping page functionality
 
@@ -125,7 +126,7 @@ const ShippingPage = ({ history }) => {
                 </div>
                 <div className="shipping-itemqty">{item.qty}</div>
                 <div className="shipping-itemprice">
-                  Rs {item.qty * item.price}
+                  {Rupees(item.qty * item.price)}
                 </div>
               </React.Fragment>
             ))}
@@ -136,7 +137,7 @@ const ShippingPage = ({ history }) => {
               className="button button-primary"
               onClick={(e) => placeOrderHandler()}
             >
-              Pay Rs {`${price}`}
+              Pay {Rupees(price)}
             </button>
           </div>
         </div>

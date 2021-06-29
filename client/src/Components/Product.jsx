@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Rupees from "../utils/Rupees";
 import Rating from "./Rating";
 
 const Product = ({ product }) => {
@@ -25,7 +26,7 @@ const Product = ({ product }) => {
         <Rating value={product.rating} text={`${product.numReviews} reviews`} />
       </div>
 
-      <div className="product-card-price">Price : Rs {product.price}</div>
+      <div className="product-card-price">Price : {Rupees(product.price)}</div>
     </div>
   );
 };

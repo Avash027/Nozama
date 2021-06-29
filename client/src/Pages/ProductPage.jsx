@@ -4,7 +4,8 @@ import { ProductDetails } from "../actions/productActions";
 import Rating from "../Components/Rating";
 import Loading from "../Components/Loading";
 import Error from "../Components/Error";
-import CommentSection from "../Components/CommentSection";
+import CommentSection from "../Components/ProductPageElements/CommentSection";
+import Rupees from "../utils/Rupees";
 
 const ProductPage = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -57,7 +58,7 @@ const ProductPage = ({ history, match }) => {
           <div className="product-main-checkout">
             <div className="product-main-checkout-heading">Checkout Box</div>
             <div className="product-main-checkout-price">
-              Price : Rs {product.price}
+              Price : {Rupees(product.price)}
             </div>
             <div className="product-main-checkout-quantity">
               <select
@@ -85,7 +86,8 @@ const ProductPage = ({ history, match }) => {
                   href="#"
                   onClick={addToCart}
                 >
-                  Add to cart
+                  <i class="fas fa-shopping-cart">  </i>
+                     Add to cart
                 </button>
               </div>
             )}
