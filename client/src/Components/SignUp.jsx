@@ -12,6 +12,7 @@ const SignUp = ({
   setPassword,
   submitHandlerForSignUp,
   loading,
+  error
 }) => {
   return (
     <div>
@@ -35,6 +36,9 @@ const SignUp = ({
           <div className="signup-container">
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
+
+            {error&&<div className="signup-error">Invalid email or password</div>}            
+
             <hr className="sign-up-hr" />
 
             <label htmlFor="Name">

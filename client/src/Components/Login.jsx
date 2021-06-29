@@ -9,6 +9,7 @@ const Login = ({
   submitHandlerForLogin,
   history,
   signUpSelected,
+  error
 }) => {
   return (
     <div>
@@ -35,6 +36,9 @@ const Login = ({
           <div className="signup-container">
             <h1>Sign In</h1>
             <p>Please fill in this form to create an account.</p>
+            
+           {error&&<div className="signup-error">Invalid email or password</div>}
+
             <hr className="sign-up-hr" />
 
             <label htmlFor="email">

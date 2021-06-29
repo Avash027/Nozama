@@ -136,7 +136,7 @@ const ShippingPage = ({ history }) => {
               className="button button-primary"
               onClick={(e) => placeOrderHandler()}
             >
-              Place Rs {`${price}`}
+              Pay Rs {`${price}`}
             </button>
           </div>
         </div>

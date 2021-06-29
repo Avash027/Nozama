@@ -41,3 +41,29 @@
     background-color: lightgray;
   }
 }
+
+@media only screen and (max-width: 685px) {
+  .search-item {
+    grid-template-columns: 5fr 1fr;
+    width: 60%;
+
+    &-name {
+      font-size: 1rem;
+      margin: auto -6rem;
+    }
+    &-price {
+      display: none;
+      visibility: collapse;
+    }
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .search-item {
+    width: 50%;
+
+    &-name {
+      margin: auto -8rem;
+    }
+  }
+}

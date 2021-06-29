@@ -101,6 +101,20 @@ a {
     margin-left: 19.4rem;
     margin-top: 3.6rem; } }
 
+@media only screen and (max-width: 400px) {
+  .header {
+    height: 15.5rem; }
+    .header-search {
+      margin-left: 0.4rem;
+      margin-top: 6.6rem; }
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      .header-right-add {
+        padding-right: 0rem; } }
+
 .product-card {
   height: 29rem;
   width: 22rem;
@@ -290,7 +304,8 @@ a {
   /* Red */
   color: white;
   margin-top: 2rem;
-  border-radius: 5px; }
+  border-radius: 5px;
+  z-index: 1000; }
   .alert-closebtn {
     margin-left: 15px;
     color: white;
@@ -390,6 +405,14 @@ a {
   content: "";
   clear: both;
   display: table; }
+
+.signup-error {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 1rem 0rem;
+  padding: 1rem 0rem;
+  border: solid 2px red;
+  color: red; }
 
 @media screen and (max-width: 300px) {
   .cancelbtn,
@@ -745,3 +768,20 @@ a {
   .search-item:hover {
     transform: scale(1.01);
     background-color: lightgray; }
+
+@media only screen and (max-width: 685px) {
+  .search-item {
+    grid-template-columns: 5fr 1fr;
+    width: 60%; }
+    .search-item-name {
+      font-size: 1rem;
+      margin: auto -6rem; }
+    .search-item-price {
+      display: none;
+      visibility: collapse; } }
+
+@media only screen and (max-width: 465px) {
+  .search-item {
+    width: 50%; }
+    .search-item-name {
+      margin: auto -8rem; } }
