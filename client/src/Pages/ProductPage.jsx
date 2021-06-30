@@ -13,15 +13,20 @@ const ProductPage = ({ history, match }) => {
 
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
+  const userLogin = useSelector(state => state.userLogin)
+  const {userInfo} = userLogin;
 
   const { loading, error, product } = productDetails;
 
   useEffect(() => {
     dispatch(ProductDetails(match.params.id));
+    
   }, [dispatch, match, comment]);
 
   const addToCart = () => {
-    history.push(`/cart/${match.params.id}?qty=${qty}`); //To redirect
+
+    if(!userInfo) history.push(`/login`);
+    else history.push(`/cart/${match.params.id}?qty=${qty}`); //To redirect
   };
 
   let options = [];
@@ -34,7 +39,7 @@ const ProductPage = ({ history, match }) => {
     for (let i = 1; i <= product.countInStock; i++) options.push(i);
 
     elem = (
-      <div className="product-main">
+      <section className="product-main">
         <div className="product-main-container-img">
           <img
             src={product.image}
@@ -46,7 +51,7 @@ const ProductPage = ({ history, match }) => {
         <div className="product-main-info">
           <div className="product-main-title">{product.name}</div>
           <hr></hr>
-          <div className="product-main-desc">{product.description}</div>
+          <article className="product-main-desc">{product.description}</article>
 
           <div className="product-main-rating">
             <Rating
@@ -98,8 +103,9 @@ const ProductPage = ({ history, match }) => {
           productID={match.params.id}
           reviews={product.reviews}
           setComment={setComment}
+          history={history}
         />
-      </div>
+      </section>
     );
   }
 

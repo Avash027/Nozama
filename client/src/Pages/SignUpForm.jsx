@@ -60,7 +60,8 @@ const SignUpForm = ({ history, location }) => {
   } else {
     elemToBeRendered = (
       <Login
-      error={error}
+        loading={loading}
+        error={error}
         history={history}
         location={location}
         signUpSelected={signUpSelected}

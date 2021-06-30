@@ -14,7 +14,7 @@ const Header = () => {
   };
 
   return (
-    <div className="header">
+    <nav className="header">
       <div className="header-left">
         <div className="header-logo">
           <a href="/" className="a-white">
@@ -57,7 +57,7 @@ const Header = () => {
           </a>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 

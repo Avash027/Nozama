@@ -109,7 +109,7 @@ const SignUp = ({
                 className="signup button button-primary"
                 style={{ width: "100%", marginBottom: "1rem" }}
               >
-                {loading ? "Loading" : "SignUp"}
+                {loading?<i className="fa fa-spinner fa-spin"></i>:"Sign Up"}
               </button>
               <button
                 type="button"

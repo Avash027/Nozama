@@ -9,8 +9,12 @@ const Login = ({
   submitHandlerForLogin,
   history,
   signUpSelected,
-  error
+  error,
+  loading
 }) => {
+
+  if(loading) console.log(loading)
+
   return (
     <div>
       <div id="id01" className="modal">
@@ -73,7 +77,7 @@ const Login = ({
                 className="signup button button-primary"
                 style={{ width: "100%", marginBottom: "1rem" }}
               >
-                Sign In
+                {loading?<i className="fa fa-spinner fa-spin"></i>:"Sign In"}
               </button>
 
               <button

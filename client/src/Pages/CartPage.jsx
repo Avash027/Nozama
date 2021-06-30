@@ -48,7 +48,7 @@ const CartPage = ({ match, location, history }) => {
 
   if (!cartItems) cartItemsToBeRendered = <Loading></Loading>;
   else if (cartItems.length === 0)
-    cartItemsToBeRendered = <h2>Cart Empty !!!</h2>;
+    cartItemsToBeRendered = <h2 style={{textAlign:"center" , padding:"2rem"}}>Cart Empty !!!</h2>;
   else {
     cartItemsToBeRendered = (
       <div>

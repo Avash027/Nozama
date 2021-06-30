@@ -34,7 +34,7 @@ const getProductByID = AsyncHandler(async (req, res) => {
 @access Private(Admin only)
 **/
 
-const addProducts = async (req, res) => {
+const addProducts = AsyncHandler(async (req, res) => {
   if (!req.user.isAdmin) res.status(401).send({ Error: "Unauthorized Access" });
 
   const { productToBeAdded } = req.body;
@@ -43,7 +43,7 @@ const addProducts = async (req, res) => {
 
   if (newProduct) res.status(201).send(newProduct);
   else res.status(401).send({ Error: "Server Error" });
-};
+});
 
 /***
 @desc Add reviews of a product 
@@ -126,8 +126,6 @@ const deleteProduct = AsyncHandler(async (req, res) => {
   const result = await Product.findByIdAndDelete(productID);
   res.status(201).send({ result });
 });
-
-//TODO: Add to utils folder
 
 export {
   getProductByID,

@@ -5,7 +5,7 @@
   transition: all 0.2s;
   border-radius: 5px;
   margin-left: 2rem;
-  box-shadow: 0.1rem 0.1rem 0.7rem rgba($color-black, 10%);
+  box-shadow: 0.1rem 0.1rem 0.7rem rgba($color-black, 0%);
 
   &-img {
     height: 15rem;
@@ -36,7 +36,7 @@
   &:hover {
     border: solid 1px $color-primary;
     transform: scale(1.01);
-    box-shadow: 0.1rem 0.1rem 1.5rem rgba($color-black, 2%);
+    box-shadow: 0.1rem 0.1rem 1.5rem rgba($color-black, 0.4%);
   }
 }
 

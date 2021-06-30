@@ -79,8 +79,6 @@ export const getUser = AsyncHandler(async (req, res) => {
 export const updateUser = AsyncHandler(async (req, res) => {
   let user = await User.findById(req.body._id);
 
-  // console.log(req.body._id, user);
-
   if (user) {
     if (req.body.name) user.name = req.body.name;
     if (req.body.email) user.email = req.body.email;
