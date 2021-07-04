@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../actions/cartActions";
-import CartItem from "../Components/CartItem";
-import Loading from "../Components/Loading";
+import CartItem from "../Components/cartPageElements/CartItem";
+import Loading from "../Components/Others/Loading";
 import Rupees from "../utils/Rupees";
 
 const CartPage = ({ match, location, history }) => {
@@ -48,7 +48,9 @@ const CartPage = ({ match, location, history }) => {
 
   if (!cartItems) cartItemsToBeRendered = <Loading></Loading>;
   else if (cartItems.length === 0)
-    cartItemsToBeRendered = <h2 style={{textAlign:"center" , padding:"2rem"}}>Cart Empty !!!</h2>;
+    cartItemsToBeRendered = (
+      <h2 style={{ textAlign: "center", padding: "2rem" }}>Cart Empty !!!</h2>
+    );
   else {
     cartItemsToBeRendered = (
       <div>

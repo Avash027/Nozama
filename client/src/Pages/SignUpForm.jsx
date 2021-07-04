@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, signup } from "../actions/userActions";
-import SignUp from "../Components/SignUp";
-import Login from "../Components/Login";
+import SignUp from "../Components/SignUpFormElements/SignUp";
+import Login from "../Components/SignUpFormElements/Login";
 
 const SignUpForm = ({ history, location }) => {
   const [signUpSelected, setSignUpSelected] = useState(true);

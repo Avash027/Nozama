@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../actions/userActions";
-import OrderPanel from "../Components/OrderPanel";
+import OrderPanel from "../Components/userProfileElements/OrderPanel";
 
 const UserProfile = ({ history }) => {
   const dispatch = useDispatch();

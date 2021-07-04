@@ -1,7 +1,8 @@
-import Header from "./Components/Header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Footer from "./Components/Footer";
 import { useSelector } from "react-redux";
+
+import Footer from "./Components/LayoutElements/Footer";
+import Header from "./Components/LayoutElements/Header";
 
 import HomePage from "./Pages/HomePage";
 import ProductPage from "./Pages/ProductPage";

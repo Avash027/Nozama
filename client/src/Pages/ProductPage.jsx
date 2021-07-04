@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ProductDetails } from "../actions/productActions";
-import Rating from "../Components/Rating";
-import Loading from "../Components/Loading";
-import Error from "../Components/Error";
+import Rating from "../Components/Others/Rating";
+import Loading from "../Components/Others/Loading";
+import Error from "../Components/Others/Error";
 import CommentSection from "../Components/ProductPageElements/CommentSection";
 import Rupees from "../utils/Rupees";
 
@@ -13,19 +13,17 @@ const ProductPage = ({ history, match }) => {
 
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
-  const userLogin = useSelector(state => state.userLogin)
-  const {userInfo} = userLogin;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   const { loading, error, product } = productDetails;
 
   useEffect(() => {
     dispatch(ProductDetails(match.params.id));
-    
   }, [dispatch, match, comment]);
 
   const addToCart = () => {
-
-    if(!userInfo) history.push(`/login`);
+    if (!userInfo) history.push(`/login`);
     else history.push(`/cart/${match.params.id}?qty=${qty}`); //To redirect
   };
 
@@ -91,8 +89,8 @@ const ProductPage = ({ history, match }) => {
                   href="#"
                   onClick={addToCart}
                 >
-                  <i class="fas fa-shopping-cart">  </i>
-                     Add to cart
+                  <i class="fas fa-shopping-cart"> </i>
+                  Add to cart
                 </button>
               </div>
             )}

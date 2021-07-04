@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Error from "../Components/Error";
-import Loading from "../Components/Loading";
+import Error from "../Components/Others/Error";
+import Loading from "../Components/Others/Loading";
 import { listProducts } from "../actions/productActions";
 import {
   _AddProductSubmitHandler,

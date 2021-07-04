@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { listProducts } from "../actions/productActions";
 
-import Error from "../Components/Error";
-import Loading from "../Components/Loading";
-import SearchItemElement from "../Components/SearchItemElement";
+import Error from "../Components/Others/Error";
+import Loading from "../Components/Others/Loading";
+import SearchItemElement from "../Components/SearchPageElements/SearchItemElement";
 import { _findProductsByName } from "../utils/SearchPageutil";
 
 const SearchPage = ({ history, match }) => {
@@ -22,7 +22,7 @@ const SearchPage = ({ history, match }) => {
     console.log(products);
     const filteredProducts = _findProductsByName(products, match.params.query);
     setSearchResults(filteredProducts);
-  }, [products,match]);
+  }, [products, match]);
 
   const redirectHandler = (_id) => {
     history.push(`/product/${_id}`);
@@ -33,7 +33,11 @@ const SearchPage = ({ history, match }) => {
   if (!products && error) searchedItems = <Error></Error>;
   else if (products && products.length !== 0) {
     searchedItems = searchResults.map((product) => (
-      <SearchItemElement key={product._id} product={product} redirectHandler={redirectHandler} />
+      <SearchItemElement
+        key={product._id}
+        product={product}
+        redirectHandler={redirectHandler}
+      />
     ));
   } else if (loading) {
     searchedItems = <Loading></Loading>;

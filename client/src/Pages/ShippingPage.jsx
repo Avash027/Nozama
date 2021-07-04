@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
 import { removeFromCartAll } from "../actions/cartActions";
-import StripeForm from "../Components/StripeForm";
+import StripeForm from "../Components/shippingPageElements/StripeForm";
 import { _PlaceOrder, _updateProductsQty } from "../utils/ShippingPageAPI";
 import { STRIPE_KEY } from "../utils/secretKey";
 import Rupees from "../utils/Rupees";
