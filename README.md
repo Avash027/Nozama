@@ -12,7 +12,7 @@
 4. Redux thunk middleware for asynchronus redux actions
 5. React router for routing to different pages
 6. Express middleware on the backened to handle routes and requests
-7. Mongoose schema for the database and performing operations
+7. Mongoose for the database schema and performing operations
 8. MongoDB used as a database
 
 ## Features
@@ -26,11 +26,12 @@
 5. Updates stock, rating and comments as per the input by customers
 6. Admin control to add and delete products
 7. Admin also confirms the delivery of order
+8. Stripe api integrated. Currently allows only credit card
 
 ## Future plans for this project
 
 1. UI works for now at least, although I want to make it more polished. Maybe work on UI a bit later.
-2. Stripe is something I will be adding to this project.
+2. ~~Stripe is something I will be adding to this project.~~
 3. Maybe a few optimisations on the backened once I get better.
 
 ## Install this project

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, signup } from "../actions/userActions";
 import SignUp from "../Components/SignUp";
 import Login from "../Components/Login";
-import Error from "../Components/Error"
 
 const SignUpForm = ({ history, location }) => {
   const [signUpSelected, setSignUpSelected] = useState(true);
@@ -37,9 +36,7 @@ const SignUpForm = ({ history, location }) => {
 
   let elemToBeRendered;
 
-  
-  
- if (signUpSelected) {
+  if (signUpSelected) {
     elemToBeRendered = (
       <SignUp
         history={history}
@@ -74,10 +71,7 @@ const SignUpForm = ({ history, location }) => {
       />
     );
   }
-  return <React.Fragment>
-          
-        {elemToBeRendered}
-          </React.Fragment>;
+  return <React.Fragment>{elemToBeRendered}</React.Fragment>;
 };
 
 export default SignUpForm;

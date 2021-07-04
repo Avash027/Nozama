@@ -167,6 +167,10 @@ a {
     background-color: white;
     color: #1d4ed8;
     transform: scale(1.01); }
+  .button:disabled {
+    background-color: gray;
+    color: black;
+    pointer-events: none; }
 
 .warning-button {
   text-decoration: none;
@@ -519,6 +523,29 @@ a {
   .comment-user-review {
     padding-bottom: 0.5rem; }
 
+.scroll {
+  height: 300px;
+  width: 40px;
+  overflow-y: scroll;
+  display: inline-block; }
+  .scroll .inner {
+    height: 300%;
+    width: 100%;
+    content: "."; }
+  .scroll--simple::-webkit-scrollbar {
+    width: 6px;
+    height: 6px; }
+  .scroll--simple::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1); }
+  .scroll--simple::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2); }
+  .scroll--simple::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4); }
+  .scroll--simple::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.9); }
+
 .home-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; }
@@ -668,6 +695,14 @@ a {
 
 .shipping-itemprice {
   padding-bottom: 0.5rem; }
+
+.shipping-cardContainer {
+  width: 80%;
+  height: 4rem;
+  margin-left: 9rem;
+  margin-top: 2rem;
+  border: solid 2px #1d4ed8;
+  border-radius: 5px; }
 
 @media only screen and (max-width: 890px) {
   .shipping {

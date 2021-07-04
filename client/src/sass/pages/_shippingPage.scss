@@ -57,6 +57,15 @@
   &-itemprice {
     padding-bottom: 0.5rem;
   }
+
+  &-cardContainer {
+    width: 80%;
+    height: 4rem;
+    margin-left: 9rem;
+    margin-top: 2rem;
+    border: solid 2px $color-primary;
+    border-radius: 5px;
+  }
 }
 
 @media only screen and (max-width: 890px) {

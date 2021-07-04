@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 import { removeFromCartAll } from "../actions/cartActions";
+import StripeForm from "../Components/StripeForm";
 import { _PlaceOrder, _updateProductsQty } from "../utils/ShippingPageAPI";
+import { STRIPE_KEY } from "../utils/secretKey";
 import Rupees from "../utils/Rupees";
+
+const stripePromise = loadStripe(STRIPE_KEY);
 
 //TODO Check shipping page functionality
 
@@ -21,8 +27,10 @@ const ShippingPage = ({ history }) => {
   const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
   const [price, setPrice] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const placeOrderHandler = async () => {
+  const placeOrderHandler = async (stripeID) => {
+    setIsLoading(true);
     const [, error] = await _PlaceOrder(
       address,
       city,
@@ -30,14 +38,17 @@ const ShippingPage = ({ history }) => {
       country,
       userInfo,
       cartItems,
-      price
+      price,
+      stripeID
     );
     const [, error1] = await _updateProductsQty(cartItems);
 
     if (error || error1) {
-      alert("Please check the details submitted");
+      alert("Please check the details submitted or try again later");
       return;
     }
+
+    setIsLoading(false);
 
     dispatch(removeFromCartAll());
     alert("Orders placed successfully");
@@ -50,7 +61,7 @@ const ShippingPage = ({ history }) => {
       totalPrice += cartItems[i].price * cartItems[i].qty;
     totalPrice = totalPrice.toFixed(3);
     setPrice(totalPrice);
-  }, []);
+  }, [cartItems]);
 
   return (
     <div className="shipping">
@@ -132,14 +143,13 @@ const ShippingPage = ({ history }) => {
             ))}
           </div>
 
-          <div className="button-container" style={{ marginTop: "2rem" }}>
-            <button
-              className="button button-primary"
-              onClick={(e) => placeOrderHandler()}
-            >
-              Pay {Rupees(price)}
-            </button>
-          </div>
+          <Elements stripe={stripePromise}>
+            <StripeForm
+              price={Rupees(price)}
+              placeOrderHandler={placeOrderHandler}
+              isLoading={isLoading}
+            />
+          </Elements>
         </div>
       </div>
     </div>

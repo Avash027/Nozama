@@ -23,8 +23,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-
+secretKey.js
 seeder.js
 data
-.gitignore
 package-lock.json

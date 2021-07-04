@@ -15,6 +15,12 @@
     color: $color-primary;
     transform: scale(1.01);
   }
+
+  &:disabled {
+    background-color: gray;
+    color: $color-black;
+    pointer-events: none;
+  }
 }
 
 .warning-button {

@@ -7,6 +7,10 @@ const orderSchema = mongoose.Schema(
       required: true,
       ref: "User",
     },
+    stripeID: {
+      type: "String",
+      required: true,
+    },
     orderItems: [
       {
         name: { type: String, required: true },

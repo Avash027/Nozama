@@ -1,5 +1,13 @@
 import AsyncHandler from "express-async-handler";
 import Order from "../models/orderModel.js";
+import Stripe from "stripe";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+//TODO add key to good location
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 /***
 @desc Place orders 
@@ -10,9 +18,20 @@ export const placeOrders = AsyncHandler(async (req, res) => {
   const { orderItem } = req.body;
 
   try {
+    const payment = await stripe.paymentIntents.create({
+      amount: Number(orderItem.totalPrice) * 100,
+      currency: "INR",
+      payment_method: orderItem.stripeID,
+      confirm: true,
+    });
+
+    if (!payment) {
+      res.status(500).json({ Error: "Server error" });
+    }
+
     const orderData = await Order.create(orderItem);
 
-    res.status(201).send(orderData);
+    if (orderData) res.status(201).send(orderData);
   } catch (error) {
     res.status(401).send({
       Error: "Invalid error or server side error",

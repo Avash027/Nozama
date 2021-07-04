@@ -7,7 +7,8 @@ export const _PlaceOrder = async (
   country,
   userInfo,
   cartItems,
-  totalPrice
+  totalPrice,
+  stripeID
 ) => {
   try {
     const { token } = JSON.parse(localStorage.getItem("userInfo"));
@@ -41,6 +42,7 @@ export const _PlaceOrder = async (
       totalPrice: totalPrice,
       isDelivered: false,
       orderedAt: new Date(),
+      stripeID,
     };
 
     const { data } = await axios.post("/api/orders", { orderItem }, config);

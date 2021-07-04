@@ -5,6 +5,8 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.4.1",
+    "@stripe/stripe-js": "^1.15.1",
     "bcryptjs": "^2.4.3",
     "chalk": "^4.1.1",
     "concurrently": "^6.2.0",
@@ -12,7 +14,8 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.0"
+    "mongoose": "^5.13.0",
+    "stripe": "^8.160.0"
   },
   "devDependencies": {},
   "scripts": {
