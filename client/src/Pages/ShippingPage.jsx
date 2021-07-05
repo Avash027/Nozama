@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import Notification from "../utils/Notification";
+import NotificationSystem from "react-notification-system";
 
 import { removeFromCartAll } from "../actions/cartActions";
 import { _PlaceOrder, _updateProductsQty } from "../utils/ShippingPageAPI";
@@ -16,6 +18,7 @@ const stripePromise = loadStripe(STRIPE_KEY);
 
 const ShippingPage = ({ history }) => {
   const dispatch = useDispatch();
+  const notificationSystem = React.createRef();
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -29,6 +32,22 @@ const ShippingPage = ({ history }) => {
   const [country, setCountry] = useState("");
   const [price, setPrice] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
+
+  useEffect(() => {
+    if (!success) return;
+    Notification(notificationSystem, "success", "Order placed", "");
+    setSuccess(false);
+    setIsLoading(false);
+  }, [success, history, notificationSystem]);
+
+  useEffect(() => {
+    if (!failure) return;
+    Notification(notificationSystem, "error", "Order could not be placed", "");
+    setFailure(false);
+    setIsLoading(false);
+  }, [failure, history, notificationSystem]);
 
   const placeOrderHandler = async (stripeID) => {
     setIsLoading(true);
@@ -45,15 +64,14 @@ const ShippingPage = ({ history }) => {
     const [, error1] = await _updateProductsQty(cartItems);
 
     if (error || error1) {
-      alert("Please check the details submitted or try again later");
+      setFailure(true);
       return;
     }
 
     setIsLoading(false);
 
     dispatch(removeFromCartAll());
-    alert("Orders placed successfully");
-    history.push("/");
+    setSuccess(true);
   };
 
   useEffect(() => {
@@ -66,6 +84,7 @@ const ShippingPage = ({ history }) => {
 
   return (
     <div className="shipping">
+      <NotificationSystem ref={notificationSystem} />
       <div className="shipping-container">
         <div className="shipping-container-userinfo">
           <div className="main-heading">Fill the shipping details</div>

@@ -28,11 +28,6 @@ const UserProfile = ({ history }) => {
   }, [userInfo, history]);
 
   const updateUserHandler = () => {
-    if (pass !== repPass) {
-      alert("Password not matching");
-      return;
-    }
-
     dispatch(updateUser(userInfo._id, Name, email, pass));
   };
 
@@ -70,7 +65,7 @@ const UserProfile = ({ history }) => {
         <br />
 
         <label htmlFor="passtag" className="user-profile-pass-label">
-          Password:
+          New Password:
         </label>
         <br />
         <input
@@ -84,7 +79,7 @@ const UserProfile = ({ history }) => {
         <br />
 
         <label htmlFor="passreptag" className="user-profile-passrep-label">
-          Repeat Password:
+          Repeat New Password:
         </label>
         <br />
         <input
