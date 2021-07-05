@@ -24,6 +24,7 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "compile:sass": "node-sass client/src/sass/main.scss client/src/index.css",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "start":"node server/index.js"
   },
   "keywords": [],
