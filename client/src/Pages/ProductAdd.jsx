@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import loadable from "@loadable/component";
+import NotificationSystem from "react-notification-system";
 
 import { listProducts } from "../actions/productActions";
 import {
   _AddProductSubmitHandler,
   _DeleteProductHandler,
 } from "../utils/ProductAdd";
+import Notification from "../utils/Notification";
 
 const AddProduct = loadable(() =>
   import("../Components/AdminPanel/AddProduct")
@@ -18,8 +20,12 @@ const Error = loadable(() => import("../Components/Others/Error"));
 const Loading = loadable(() => import("../Components/Others/Loading"));
 
 //TODO : Check the add and delete handler once
+//TODO Fix key prop in product delete
+//TODO only numbers allowed in price and stock
+
 const ProductAdd = ({ history }) => {
   const dispatch = useDispatch();
+  const notificationSystem = React.createRef();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -50,14 +56,25 @@ const ProductAdd = ({ history }) => {
       category,
       description,
       Number(price),
-      Number(stock)
+      Number(stock),
+      userInfo.token
     );
 
     if (data) {
-      alert("Product added successfully");
+      Notification(
+        notificationSystem,
+        "success",
+        "Product Added",
+        "Product added successfully"
+      );
       history.push("/add");
     } else if (error) {
-      alert("Image too large .. Please try another image!!");
+      Notification(
+        notificationSystem,
+        "error",
+        "Product could not be added",
+        "Image size too large"
+      );
     }
   };
 
@@ -67,10 +84,20 @@ const ProductAdd = ({ history }) => {
     const [data, error] = await _DeleteProductHandler(token, productID);
 
     if (data) {
-      alert("Deletion successful");
+      Notification(
+        notificationSystem,
+        "success",
+        "Product Deleted",
+        "Product deleted Successfully"
+      );
       setComment(data);
     } else if (error) {
-      alert("Deletion unsuccessful");
+      Notification(
+        notificationSystem,
+        "error",
+        "Product could not be deleted",
+        "Try checking the database"
+      );
     }
   };
 
@@ -124,6 +151,7 @@ const ProductAdd = ({ history }) => {
 
   return (
     <>
+      <NotificationSystem ref={notificationSystem} />
       <div
         className="toggleBar"
         onClick={(e) => setToaddProduct(!toaddProduct)}

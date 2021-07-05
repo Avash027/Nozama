@@ -12,7 +12,7 @@ const SignUp = ({
   setPassword,
   submitHandlerForSignUp,
   loading,
-  error
+  error,
 }) => {
   return (
     <div>
@@ -37,7 +37,9 @@ const SignUp = ({
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
 
-            {error&&<div className="signup-error">Invalid email or password</div>}            
+            {error && (
+              <div className="signup-error">Invalid email or password</div>
+            )}
 
             <hr className="sign-up-hr" />
 
@@ -109,7 +111,11 @@ const SignUp = ({
                 className="signup button button-primary"
                 style={{ width: "100%", marginBottom: "1rem" }}
               >
-                {loading?<i className="fa fa-spinner fa-spin"></i>:"Sign Up"}
+                {loading ? (
+                  <i className="fa fa-spinner fa-spin"></i>
+                ) : (
+                  "Sign Up"
+                )}
               </button>
               <button
                 type="button"

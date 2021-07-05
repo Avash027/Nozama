@@ -10,10 +10,9 @@ const Login = ({
   history,
   signUpSelected,
   error,
-  loading
+  loading,
 }) => {
-
-  if(loading) console.log(loading)
+  if (loading) console.log(loading);
 
   return (
     <div>
@@ -40,8 +39,10 @@ const Login = ({
           <div className="signup-container">
             <h1>Sign In</h1>
             <p>Please fill in this form to create an account.</p>
-            
-           {error&&<div className="signup-error">Invalid email or password</div>}
+
+            {error && (
+              <div className="signup-error">Invalid email or password</div>
+            )}
 
             <hr className="sign-up-hr" />
 
@@ -77,7 +78,11 @@ const Login = ({
                 className="signup button button-primary"
                 style={{ width: "100%", marginBottom: "1rem" }}
               >
-                {loading?<i className="fa fa-spinner fa-spin"></i>:"Sign In"}
+                {loading ? (
+                  <i className="fa fa-spinner fa-spin"></i>
+                ) : (
+                  "Sign In"
+                )}
               </button>
 
               <button
