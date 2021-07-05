@@ -23,7 +23,8 @@
     "server": "nodemon server/index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "compile:sass": "node-sass client/src/sass/main.scss client/src/index.css"
+    "compile:sass": "node-sass client/src/sass/main.scss client/src/index.css",
+    "start":"node server/index.js"
   },
   "keywords": [],
   "author": "Avash",
