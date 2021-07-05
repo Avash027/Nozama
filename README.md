@@ -1,6 +1,8 @@
 # Nozama (MERN Stack E-Commerce Web App)
 
-### (Under production. Not yet hosted. Will be hosting soon)
+~~Under production. Not yet hosted. Will be hosting soon~~
+
+Check out the website [here](https://nozamaapp.herokuapp.com)
 
 ## Tech Stack used
 
