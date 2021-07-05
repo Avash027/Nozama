@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
+import loadable from "@loadable/component";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../actions/cartActions";
-import CartItem from "../Components/cartPageElements/CartItem";
-import Loading from "../Components/Others/Loading";
-import Rupees from "../utils/Rupees";
+
+const CartItem = loadable(() =>
+  import("../Components/cartPageElements/CartItem")
+);
+const Loading = loadable(() => import("../Components/Others/Loading"));
+const Rupees = loadable(() => import("../utils/Rupees"));
 
 const CartPage = ({ match, location, history }) => {
   const productIDfromTheURL = match.params.id;

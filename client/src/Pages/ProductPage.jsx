@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ProductDetails } from "../actions/productActions";
-import Rating from "../Components/Others/Rating";
-import Loading from "../Components/Others/Loading";
-import Error from "../Components/Others/Error";
-import CommentSection from "../Components/ProductPageElements/CommentSection";
 import Rupees from "../utils/Rupees";
+import loadable from "@loadable/component";
+
+const Rating = loadable(() => import("../Components/Others/Rating"));
+const Loading = loadable(() => import("../Components/Others/Loading"));
+const Error = loadable(() => import("../Components/Others/Error"));
+const CommentSection = loadable(() =>
+  import("../Components/ProductPageElements/CommentSection")
+);
 
 const ProductPage = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -89,7 +93,7 @@ const ProductPage = ({ history, match }) => {
                   href="#"
                   onClick={addToCart}
                 >
-                  <i class="fas fa-shopping-cart"> </i>
+                  <i className="fas fa-shopping-cart"> </i>
                   Add to cart
                 </button>
               </div>

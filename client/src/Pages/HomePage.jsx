@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Product from "../Components/HomePageElements/Product";
 import { listProducts } from "../actions/productActions";
-import Loading from "../Components/Others/Loading";
-import Error from "../Components/Others/Error";
+import loadable from "@loadable/component";
+
+const Product = loadable(() =>
+  import("../Components/HomePageElements/Product")
+);
+const Loading = loadable(() => import("../Components/Others/Loading"));
+const Error = loadable(() => import("../Components/Others/Error"));
 
 const HomePage = () => {
   const dispatch = useDispatch();

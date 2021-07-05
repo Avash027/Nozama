@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Error from "../Components/Others/Error";
-import Loading from "../Components/Others/Loading";
+import loadable from "@loadable/component";
+
 import { listProducts } from "../actions/productActions";
 import {
   _AddProductSubmitHandler,
   _DeleteProductHandler,
 } from "../utils/ProductAdd";
-import AddProduct from "../Components/AdminPanel/AddProduct";
-import DeleteProductItem from "../Components/AdminPanel/DeleteProductItem";
+
+const AddProduct = loadable(() =>
+  import("../Components/AdminPanel/AddProduct")
+);
+const DeleteProductItem = loadable(() =>
+  import("../Components/AdminPanel/DeleteProductItem")
+);
+const Error = loadable(() => import("../Components/Others/Error"));
+const Loading = loadable(() => import("../Components/Others/Loading"));
 
 //TODO : Check the add and delete handler once
 const ProductAdd = ({ history }) => {

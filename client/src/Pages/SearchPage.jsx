@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { listProducts } from "../actions/productActions";
+import loadable from "@loadable/component";
 
-import Error from "../Components/Others/Error";
-import Loading from "../Components/Others/Loading";
-import SearchItemElement from "../Components/SearchPageElements/SearchItemElement";
 import { _findProductsByName } from "../utils/SearchPageutil";
+
+const Error = loadable(() => import("../Components/Others/Error"));
+const Loading = loadable(() => import("../Components/Others/Loading"));
+const SearchItemElement = loadable(() =>
+  import("../Components/SearchPageElements/SearchItemElement")
+);
 
 const SearchPage = ({ history, match }) => {
   const dispatch = useDispatch();

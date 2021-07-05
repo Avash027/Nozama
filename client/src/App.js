@@ -1,17 +1,18 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
+import loadable from "@loadable/component";
 
-import Footer from "./Components/LayoutElements/Footer";
-import Header from "./Components/LayoutElements/Header";
+const Footer = loadable(() => import("./Components/LayoutElements/Footer"));
+const Header = loadable(() => import("./Components/LayoutElements/Header"));
 
-import HomePage from "./Pages/HomePage";
-import ProductPage from "./Pages/ProductPage";
-import CartPage from "./Pages/CartPage";
-import SignUpForm from "./Pages/SignUpForm";
-import UserProfile from "./Pages/UserProfile";
-import ShippingPage from "./Pages/ShippingPage";
-import ProductAdd from "./Pages/ProductAdd";
-import SearchPage from "./Pages/SearchPage";
+const HomePage = loadable(() => import("./Pages/HomePage"));
+const ProductPage = loadable(() => import("./Pages/ProductPage"));
+const CartPage = loadable(() => import("./Pages/CartPage"));
+const SignUpForm = loadable(() => import("./Pages/SignUpForm"));
+const UserProfile = loadable(() => import("./Pages/UserProfile"));
+const ShippingPage = loadable(() => import("./Pages/ShippingPage"));
+const ProductAdd = loadable(() => import("./Pages/ProductAdd"));
+const SearchPage = loadable(() => import("./Pages/SearchPage"));
 
 function App() {
   const userLogin = useSelector((state) => state.userLogin);
