@@ -8,6 +8,9 @@ const Product = loadable(() =>
 );
 const Loading = loadable(() => import("../Components/Others/Loading"));
 const Error = loadable(() => import("../Components/Others/Error"));
+const CarouselContainer = loadable(() =>
+  import("../Components/HomePageElements/CarouselContainer")
+);
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -27,8 +30,9 @@ const HomePage = () => {
   } else {
     elementsToBeRendered = (
       <>
+        <CarouselContainer products={products}></CarouselContainer>
         <div className="home-container">
-          {products.map((product, idx) => {
+          {products.map((product) => {
             return (
               <div key={product._id} className="home-container-card-container">
                 <Product product={product} />

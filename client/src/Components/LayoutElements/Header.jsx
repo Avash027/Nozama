@@ -28,6 +28,7 @@ const Header = () => {
           className="header-input"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          required={true}
         ></input>
 
         <a href={`/search/${encodeURI(search)}`} className="header-search">
@@ -37,22 +38,29 @@ const Header = () => {
 
       <div className="header-right">
         {userInfo && userInfo.isAdmin && (
-          <a href="/add" className="a-white header-right-add">
+          <a href="/add" className="a-white header-right-add header-right-back">
             <i className="fas fa-plus "></i>Add/Delete Products
           </a>
         )}
 
-        <a href="/cart" className="a-white">
+        <a href="/cart" className="a-white header-right-back">
           <i className="fas fa-shopping-cart"></i>Cart
         </a>
 
-        <a href={userInfo ? "/user/profile" : "/login"} className="a-white">
+        <a
+          href={userInfo ? "/user/profile" : "/login"}
+          className="a-white header-right-back"
+        >
           <i className="fas fa-user header-right-signin"></i>
           {userInfo ? " " + userInfo.name : "Sign Up / Log In"}
         </a>
 
         {userInfo && (
-          <a href="/" className="a-white" onClick={logoutUser}>
+          <a
+            href="/"
+            className="a-white header-right-back"
+            onClick={logoutUser}
+          >
             <i className="fas fa-sign-out-alt header-logout"></i> Logout
           </a>
         )}

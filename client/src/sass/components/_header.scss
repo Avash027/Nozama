@@ -37,6 +37,17 @@
     &-add {
       padding-right: 1rem;
     }
+
+    &-back {
+      border-radius: 5px;
+      transition: all 0.2s;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+
+      &:hover {
+        background-color: rgba($color-white, 0.2);
+      }
+    }
   }
 
   &-input {
@@ -46,6 +57,7 @@
     border: none;
     outline: none;
     padding: 0.5rem 2rem;
+    height: 3rem;
   }
 
   &-search {
@@ -75,30 +87,30 @@
   }
 }
 
-@media only screen and (max-width: 485px) {
+@media only screen and (max-width: 517px) {
   .header {
     height: 9.5rem;
-  }
 
-  .header-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    &-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  .header-search {
-    margin-left: 19.4rem;
-    margin-top: 3.6rem;
+    &-search {
+      margin-left: 19.4rem;
+      margin-top: 3.6rem;
+    }
   }
 }
 
 @media only screen and (max-width: 400px) {
   .header {
-    height: 15.5rem;
+    height: 19.5rem;
 
     &-search {
       margin-left: 0.4rem;
-      margin-top: 6.6rem;
+      margin-top: 7rem;
     }
 
     &-right {

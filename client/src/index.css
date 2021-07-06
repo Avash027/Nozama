@@ -62,13 +62,21 @@ a {
       padding-left: 1rem; }
     .header-right-add {
       padding-right: 1rem; }
+    .header-right-back {
+      border-radius: 5px;
+      transition: all 0.2s;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem; }
+      .header-right-back:hover {
+        background-color: rgba(255, 255, 255, 0.2); }
   .header-input {
     margin-top: 0.7rem;
     font-family: inherit;
     border-radius: 6px;
     border: none;
     outline: none;
-    padding: 0.5rem 2rem; }
+    padding: 0.5rem 2rem;
+    height: 3rem; }
   .header-search {
     color: white;
     padding: 0.1rem 0.6rem;
@@ -90,23 +98,23 @@ a {
     align-items: center;
     height: 6.5rem; } }
 
-@media only screen and (max-width: 485px) {
+@media only screen and (max-width: 517px) {
   .header {
     height: 9.5rem; }
-  .header-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center; }
-  .header-search {
-    margin-left: 19.4rem;
-    margin-top: 3.6rem; } }
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+    .header-search {
+      margin-left: 19.4rem;
+      margin-top: 3.6rem; } }
 
 @media only screen and (max-width: 400px) {
   .header {
-    height: 15.5rem; }
+    height: 19.5rem; }
     .header-search {
       margin-left: 0.4rem;
-      margin-top: 6.6rem; }
+      margin-top: 7rem; }
     .header-right {
       display: flex;
       flex-direction: column;
@@ -522,6 +530,34 @@ a {
     padding-bottom: 0.5rem; }
   .comment-user-review {
     padding-bottom: 0.5rem; }
+
+.slider-container {
+  width: 95%;
+  height: 35vh;
+  margin: 2rem auto;
+  background-color: #1d4ed8;
+  text-align: center;
+  border-radius: 5px; }
+
+.slider-element-img {
+  height: 20vh;
+  margin: 2rem auto;
+  display: block; }
+
+.slider-element-link {
+  text-decoration: none; }
+
+.slider-element-heading {
+  color: white;
+  font-size: 1.5rem; }
+
+@media only screen and (max-width: 950px) {
+  .slider-container {
+    width: 90%; } }
+
+@media only screen and (max-width: 481px) {
+  .slider-container {
+    width: 85%; } }
 
 .home-container {
   display: grid;
