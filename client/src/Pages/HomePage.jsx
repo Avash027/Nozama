@@ -48,7 +48,7 @@ const HomePage = () => {
     elementsToBeRendered = <Error></Error>;
   } else if (loading) {
     elementsToBeRendered = <Loading></Loading>;
-  } else {
+  } else if (products) {
     elementsToBeRendered = (
       <>
         <CarouselContainer products={products}></CarouselContainer>

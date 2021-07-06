@@ -15,6 +15,7 @@ import StripeForm from "../Components/shippingPageElements/StripeForm";
 const stripePromise = loadStripe(STRIPE_KEY);
 
 //TODO Check shipping page functionality
+//TODO Add stripe page templates
 
 const ShippingPage = ({ history }) => {
   const dispatch = useDispatch();

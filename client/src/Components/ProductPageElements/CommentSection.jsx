@@ -124,6 +124,7 @@ const CommentSection = ({ productID, setComment, reviews, history }) => {
           reviews.length !== 0 &&
           reviews.map((userReview) => (
             <CommentElement
+              key={userReview._id}
               userReview={userReview}
               deleteReviewSubmitHandler={deleteReviewSubmitHandler}
             />
