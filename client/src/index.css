@@ -559,6 +559,91 @@ a {
   .slider-container {
     width: 85%; } }
 
+:root {
+  --primary: #23adad;
+  --greyLight: #23adade1;
+  --greyLight-2: #cbe0dd;
+  --greyDark: #2d4848; }
+
+ul {
+  list-style-type: none; }
+
+.items-list {
+  max-width: 90vw;
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 3rem;
+  justify-content: center;
+  align-content: center; }
+  @media only screen and (max-width: 600px) {
+    .items-list {
+      grid-template-columns: repeat(2, 1fr); } }
+
+.item {
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #2d4848;
+  cursor: pointer; }
+  .item .material-icons {
+    background: #ffffff;
+    box-shadow: 0 0.8rem 2rem rgba(90, 97, 129, 0.05);
+    border-radius: 0.6rem;
+    padding: 2rem;
+    font-size: 3rem;
+    transition: all 0.3s ease; }
+  .item:hover .material-icons {
+    transform: scale(1.2);
+    color: #1d4ed8; }
+  .item p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: #23adade1; }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  margin: 3rem;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  box-shadow: 0 0.8rem 2rem rgba(90, 97, 129, 0.05);
+  cursor: pointer; }
+  .pagination__numbers, .pagination__btn, .pagination__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.8rem;
+    font-size: 1.4rem;
+    cursor: pointer; }
+  .pagination__dots {
+    width: 2.6rem;
+    height: 2.6rem;
+    color: #23adade1;
+    cursor: initial; }
+  .pagination__numbers {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 0.4rem; }
+    .pagination__numbers:hover {
+      color: #1d4ed8; }
+    .pagination__numbers.active {
+      color: #ffffff;
+      background: #1d4ed8;
+      font-weight: 600;
+      border: 1px solid #1d4ed8; }
+  .pagination__btn {
+    color: #23adade1; }
+    .pagination__btn.active {
+      color: #2d4848; }
+      .pagination__btn.active:hover {
+        color: #1d4ed8; }
+
 .home-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; }
