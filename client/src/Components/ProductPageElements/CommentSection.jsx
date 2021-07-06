@@ -18,6 +18,8 @@ const CommentSection = ({ productID, setComment, reviews, history }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    if (!userInfo) return;
+
     const userAlreadyPresent = reviews.find(
       (review) => review.user === userInfo._id
     );
