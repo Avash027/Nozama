@@ -6,6 +6,7 @@
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
+  border-radius: 5px;
   background: #f1f1f1;
   border: solid 1px transparent;
 }
@@ -68,6 +69,7 @@
   margin: 5% auto 15% auto;
   width: 80%;
   border: solid 2px $color-primary;
+  border-radius: 5px;
 
   box-shadow: 1rem 1rem 1rem rgba($color-black, 0.3);
 }

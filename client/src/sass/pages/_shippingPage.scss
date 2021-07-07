@@ -59,11 +59,22 @@
   }
 
   &-cardContainer {
-    width: 80%;
+    width: 94%;
     height: 4rem;
     margin: 2rem auto;
     border: solid 2px $color-primary;
     border-radius: 5px;
+    padding: 1.1rem 1rem;
+    transition: all 0.2s;
+
+    &:hover {
+      border: solid 2px $color-primary-dark;
+    }
+
+    &:focus {
+      border: solid 2px $color-primary-dark;
+      background-color: lightgrey;
+    }
   }
 }
 

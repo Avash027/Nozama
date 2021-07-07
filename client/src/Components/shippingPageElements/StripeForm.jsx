@@ -1,6 +1,31 @@
 import React from "react";
 import { useStripe, CardElement, useElements } from "@stripe/react-stripe-js";
 
+const iframeStyles = {
+  base: {
+    marginTop: "1rem",
+    color: "#1e3a8a",
+    fontSize: "1.5rem",
+    iconColor: "#1e3a8a",
+    "::placeholder": {
+      color: "#87bbfd",
+    },
+  },
+  invalid: {
+    iconColor: "red",
+    color: "red",
+  },
+  complete: {
+    iconColor: "green",
+  },
+};
+
+const cardElementOpts = {
+  iconStyle: "solid",
+  style: iframeStyles,
+  hidePostalCode: true,
+};
+
 const StripeForm = ({ price, placeOrderHandler, isLoading }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -22,9 +47,9 @@ const StripeForm = ({ price, placeOrderHandler, isLoading }) => {
 
   return (
     <>
+      <label>Pay through your credit card</label>
       <div className="shipping-cardContainer">
-        <label>Enter your credit card information</label>
-        <CardElement></CardElement>
+        <CardElement options={cardElementOpts}></CardElement>
       </div>
 
       <div className="button-container" style={{ marginTop: "2rem" }}>
