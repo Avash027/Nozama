@@ -11,6 +11,9 @@ const SearchItemElement = loadable(() =>
   import("../Components/SearchPageElements/SearchItemElement")
 );
 
+//TODO Fix bug that sometimes search does not work
+//TODO Format the curreny and make it more responsive
+
 const SearchPage = ({ history, match }) => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);

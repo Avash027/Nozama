@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-//TODO add key to good location
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 /***

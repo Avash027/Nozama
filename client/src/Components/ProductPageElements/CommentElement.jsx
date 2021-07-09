@@ -1,6 +1,8 @@
 import React from "react";
 import Rating from "../Others/Rating";
 
+//TODO Delete button only shows up for user who made the comment
+
 const CommentElement = ({ userReview, deleteReviewSubmitHandler }) => {
   return (
     <div key={userReview._id} className="comment-user-reviews-main">

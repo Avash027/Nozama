@@ -5,6 +5,8 @@ import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import { SUCCESS } from "./utils/chalk.js";
+import slidingWindowRateLimiter from "./middleware/rateLimiters/slidingWindow/slidingWindowRateLimiter.js";
+import { fixedWindowRateLimiter } from "./middleware/rateLimiters/fixedWindowRateLimiter/fixedWindowRateLimiter.js";
 import path from "path";
 
 dotenv.config();
@@ -14,6 +16,9 @@ const PORT = process.env.PORT || 8000;
 
 const app = express();
 app.use(express.json());
+app.use(slidingWindowRateLimiter);
+//For ip bans
+app.use(fixedWindowRateLimiter);
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);

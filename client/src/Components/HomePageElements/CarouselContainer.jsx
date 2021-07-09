@@ -4,8 +4,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-//TODO Show products with best ratings
-
 const CarouselContainer = ({ products }) => {
   const settings = {
     dots: true,
