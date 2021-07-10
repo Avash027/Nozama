@@ -72,13 +72,12 @@ export const updateOrderStatus = AsyncHandler(async (req, res) => {
       });
     }
 
-    const { _id, deliveryTime } = req.body;
+    const { _id, deliveredAt } = req.body;
 
-    console.log(_id, deliveryTime);
     let order = await Order.findById(_id);
 
     order.isDelivered = true;
-    order.deliveredAt = deliveryTime;
+    order.deliveredAt = deliveredAt;
 
     const updatedOrder = await order.save();
 

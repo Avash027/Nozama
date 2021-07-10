@@ -44,6 +44,8 @@ const orderSchema = mongoose.Schema(
 
     deliveredAt: {
       type: Date,
+      required: true,
+      default: new Date(),
     },
   },
   {

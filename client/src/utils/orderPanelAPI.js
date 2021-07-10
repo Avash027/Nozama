@@ -10,7 +10,7 @@ export const _updateDeliveryStatusUtil = async (token, _id) => {
 
   const body = {
     _id,
-    deliveryTime: new Date(),
+    deliveredAt: new Date(),
   };
 
   try {

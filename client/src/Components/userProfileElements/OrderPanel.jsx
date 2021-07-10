@@ -71,8 +71,8 @@ const OrderPanel = () => {
                   Product Name
                   <hr />
                   {orderItems &&
-                    orderItems.map(({ name, qty }) => (
-                      <div key={_id + name + qty}>{`${name} (${qty})`}</div>
+                    orderItems.map(({ name, qty }, idx) => (
+                      <div key={idx}>{`${name} (${qty})`}</div>
                     ))}
                 </div>
 
@@ -88,8 +88,8 @@ const OrderPanel = () => {
                   {`Shipping Address : ${shippingAddress.address}, ${shippingAddress.postalCode}, ${shippingAddress.city}, ${shippingAddress.country}`}
                 </div>
 
-                {userInfo && userInfo && (
-                  <div className="admin-panel-user">{`Stripe Payment ID :  ${stripeID}`}</div>
+                {userInfo && (
+                  <div className="admin-panel-user">{`User ID :  ${user}`}</div>
                 )}
 
                 <div className="admin-panel-orderedAt">
@@ -99,18 +99,24 @@ const OrderPanel = () => {
                 <div
                   className="admin-panel-delivered"
                   style={
-                    !isDelivered && {
-                      color: "Red",
-                      backgroundColor: "white",
-                      borderRadius: "5px",
-                    }
+                    !isDelivered
+                      ? {
+                          color: "Red",
+                          backgroundColor: "white",
+                          borderRadius: "5px",
+                        }
+                      : {
+                          color: "Green",
+                          backgroundColor: "white",
+                          borderRadius: "5px",
+                        }
                   }
                 >
                   Delivery Status :{" "}
                   {isDelivered ? "Delivered" : "Not yet Delivered"}
                 </div>
 
-                {!isDelivered && userInfo?.isAdmin && (
+                {!isDelivered && userInfo && userInfo.isAdmin && (
                   <div
                     className="admin-panel-delivery-container"
                     onClick={() => updateDeliveryStatus(_id)}
@@ -119,7 +125,7 @@ const OrderPanel = () => {
                   </div>
                 )}
 
-                {isDelivered && (
+                {isDelivered && deliveredAt && (
                   <div className="admin-panel-delivery-date">
                     {`Delivered on : ${deliveredAt}`}
                   </div>

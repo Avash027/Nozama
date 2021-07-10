@@ -30,7 +30,7 @@ const importData = async () => {
       };
     });
 
-    await Product.insertMany(sampleProducts);
+    // await Product.insertMany(sampleProducts);
 
     console.log("Data imported");
 
@@ -57,4 +57,4 @@ const destroyData = async () => {
 };
 
 if (process.argv[2] === "-d") destroyData();
-// else importData();
+else importData();
