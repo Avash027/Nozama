@@ -1,20 +1,33 @@
 import React, { useEffect, useState } from "react";
-
+import loadable from "@loadable/component";
 import { useSelector } from "react-redux";
+
 import {
   _getOrdersUtil,
   _updateDeliveryStatusUtil,
 } from "../../utils/orderPanelAPI";
 
+const Loading = loadable(() => import("../Others/Loading"));
+const Error = loadable(() => import("../Others/Error"));
+
+//TODO add order item to separate file
+
 const OrderPanel = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const [orders, setOrders] = useState([]);
+  const [loadorderPanel, setLoadorderPanel] = useState(true);
+  const [errorPanel, setErrorPanel] = useState(false);
 
   useEffect(() => {
     const getOrders = async () => {
-      const data = await _getOrdersUtil(userInfo.token);
-      if (data) setOrders(data);
+      const orderDetails = await _getOrdersUtil(userInfo.token);
+      if (orderDetails) {
+        setOrders(orderDetails);
+        setLoadorderPanel(false);
+      } else {
+        setErrorPanel(true);
+      }
     };
 
     getOrders();
@@ -24,7 +37,7 @@ const OrderPanel = () => {
     const [data, error] = await _updateDeliveryStatusUtil(userInfo.token, _id);
 
     if (error) {
-      return alert("Cannot be processed now");
+      return alert("Cannot be processed now" + error);
     }
     const updatedOrders = [...orders];
     const index = updatedOrders.findIndex((order) => order._id === _id);
@@ -33,8 +46,9 @@ const OrderPanel = () => {
   };
 
   let ordersElements;
-
-  if (orders.length === 0) ordersElements = <h2>No orders</h2>;
+  if (loadorderPanel) ordersElements = <Loading></Loading>;
+  else if (errorPanel) ordersElements = <Error></Error>;
+  else if (orders.length === 0) ordersElements = <h2>No orders</h2>;
   else {
     ordersElements = (
       <>
@@ -49,14 +63,17 @@ const OrderPanel = () => {
             _id,
             deliveredAt,
           }) => (
-            <div className="admin-panel">
+            <div className="admin-panel" key={_id}>
               <div className="admin-panel-element-up">
                 <div className="admin-panel-names">
                   Product Name
                   <hr />
                   {orderItems &&
                     orderItems.map(({ name, qty }) => (
-                      <div className="">{`${name} (${qty})`}</div>
+                      <div
+                        key={_id + name + qty}
+                        className=""
+                      >{`${name} (${qty})`}</div>
                     ))}
                 </div>
 
@@ -85,12 +102,12 @@ const OrderPanel = () => {
                   {isDelivered ? "Delivered" : "Not yet Delivered"}
                 </div>
 
-                {!isDelivered && userInfo && userInfo.isAdmin && (
+                {!isDelivered && userInfo?.isAdmin && (
                   <div
                     className="admin-panel-delivery-container"
                     onClick={() => updateDeliveryStatus(_id)}
                   >
-                    <i class="far fa-check-circle"></i> Order Delivered
+                    <i className="far fa-check-circle"></i> Order Delivered
                   </div>
                 )}
 
@@ -109,8 +126,10 @@ const OrderPanel = () => {
 
   return (
     <div>
-      <div className="main-heading">Orders Status</div>
-      <hr />
+      <div className="main-heading" style={{ textAlign: "center" }}>
+        Orders Status
+      </div>
+
       {ordersElements}
     </div>
   );

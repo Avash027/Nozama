@@ -10,8 +10,10 @@ const OrderPanel = loadable(() =>
 const UserProfile = ({ history }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
-  //TODO : add loading and error
+  const userEdit = useSelector((state) => state.userEdit);
+
   const { userInfo } = userLogin;
+  const { loading } = userEdit;
 
   const [Name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -55,7 +57,7 @@ const UserProfile = ({ history }) => {
         </label>
         <br />
         <input
-          type="text"
+          type="email"
           className="user-profile-input"
           id="emailtag"
           value={email}
@@ -94,9 +96,14 @@ const UserProfile = ({ history }) => {
 
         <button
           className="button button-primary user-profile-button"
-          onClick={(e) => updateUserHandler()}
+          onClick={(e) => updateUserHandler(e)}
+          disabled={repPass !== pass}
         >
-          Update Changes
+          {loading ? (
+            <i className="fa fa-spinner fa-spin"></i>
+          ) : (
+            "Update Changes"
+          )}
         </button>
       </div>
 

@@ -15,5 +15,9 @@
 
     border: solid 1px $color-primary;
     outline: none;
+
+    &:invalid {
+      border: solid 1px red;
+    }
   }
 }

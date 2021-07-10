@@ -38,7 +38,7 @@ a {
   height: 4.5rem;
   width: 100%;
   background-color: #1d4ed8;
-  box-shadow: 1rem 0rem 1rem black;
+  box-shadow: 3px -1px 22px black;
   display: flex;
   justify-content: space-between; }
   .header-logout {
@@ -684,7 +684,9 @@ ul {
     height: 17rem;
     width: 100%;
     border: solid 1px #1e3a8a;
-    text-align: center; }
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2); }
     .product-main-checkout-heading {
       padding: 1rem 2rem;
       font-size: 1.4rem;
@@ -742,6 +744,8 @@ ul {
     margin: 1rem;
     border: solid 1px #1d4ed8;
     outline: none; }
+    .user-profile-input:invalid {
+      border: solid 1px red; }
 
 .shipping-container {
   display: grid;

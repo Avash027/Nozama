@@ -18,7 +18,6 @@ const SignUpForm = ({ history, location }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
 
-  //TODO: Add loading and error
   const { loading, error, userInfo } = userLogin;
 
   useEffect(() => {

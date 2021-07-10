@@ -33,7 +33,9 @@
     height: 17rem;
     width: 100%;
     border: solid 1px $color-primary-dark;
+    border-radius: 5px;
     text-align: center;
+    box-shadow: 2px 2px 15px rgba($color-black, 0.2);
 
     &-heading {
       padding: 1rem 2rem;
