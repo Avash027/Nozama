@@ -1,4 +1,5 @@
 import React from "react";
+import Rupees from "../../utils/Rupees";
 
 const SearchItemElement = ({ product, redirectHandler }) => {
   return (
@@ -17,7 +18,7 @@ const SearchItemElement = ({ product, redirectHandler }) => {
 
       <div className="search-item-name">{product.name}</div>
 
-      <div className="search-item-price">Rs {product.price}</div>
+      <div className="search-item-price">{Rupees(product.price)}</div>
     </div>
   );
 };

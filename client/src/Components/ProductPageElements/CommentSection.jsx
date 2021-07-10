@@ -119,7 +119,11 @@ const CommentSection = ({ productID, setComment, reviews, history }) => {
         </button>
       </div>
 
-      <div className="primary-heading">Read reviews by others</div>
+      <div className="primary-heading">
+        {reviews?.length !== 0
+          ? "Read reviews by others"
+          : "Be the first one to review this product"}
+      </div>
 
       <div className="comment-user-reviews-container">
         {reviews &&

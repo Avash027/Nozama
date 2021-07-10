@@ -1,0 +1,17 @@
+::-webkit-scrollbar {
+  width: 10px;
+
+  &-track {
+    background-color: $color-primary-light2;
+    border-radius: 5px;
+  }
+
+  &-thumb {
+    background-color: $color-primary-light1;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: $color-primary-light;
+    }
+  }
+}

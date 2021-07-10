@@ -24,14 +24,14 @@ function App() {
       <main>
         <div>
           <Route path="/" component={HomePage} exact />
-          <Route path="/product/:id" component={ProductPage} />
-          <Route path="/cart/:id?" component={CartPage} />
+          <Route path="/product/:id" component={ProductPage} exact />
+          <Route path="/cart/:id?" component={CartPage} exact />
           <Route path="/login" component={SignUpForm} exact />
           <Route path="/user/profile" component={UserProfile} exact />
           <Route path="/shipping" component={ShippingPage} exact />
           <Route path="/search/:query?" component={SearchPage} exact></Route>
           {userInfo && userInfo.isAdmin && (
-            <Route path="/add" component={ProductAdd} exact />
+            <Route path="/add" component={ProductAdd} exact={true} />
           )}
         </div>
       </main>

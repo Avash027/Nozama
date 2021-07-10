@@ -94,6 +94,10 @@ const UserProfile = ({ history }) => {
 
         <br />
 
+        <p style={{ marginBottom: "1rem", color: "red" }}>
+          *In case you do not want to change the old password just retype it
+        </p>
+
         <button
           className="button button-primary user-profile-button"
           onClick={(e) => updateUserHandler(e)}

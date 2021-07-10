@@ -17,8 +17,10 @@ const SignUpForm = ({ history, location }) => {
   const redirect = location.search ? location.search.split("=")[1] : "/";
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
+  const userSignUp = useSelector((state) => state.userSignUp);
 
   const { loading, error, userInfo } = userLogin;
+  const { loading: signUpLoading, error: signUpError } = userSignUp;
 
   useEffect(() => {
     if (userInfo) {
@@ -43,9 +45,9 @@ const SignUpForm = ({ history, location }) => {
     elemToBeRendered = (
       <SignUp
         history={history}
-        error={error}
+        error={signUpError}
         location={location}
-        loading={loading}
+        loading={signUpLoading}
         name={name}
         setName={setName}
         signUpSelected={signUpSelected}

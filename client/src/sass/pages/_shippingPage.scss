@@ -21,6 +21,10 @@
     &:focus {
       background-color: lightgray;
     }
+
+    &:invalid {
+      border: solid 1px red;
+    }
   }
 
   &-billing-layout {

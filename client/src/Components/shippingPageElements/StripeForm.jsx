@@ -3,9 +3,8 @@ import { useStripe, CardElement, useElements } from "@stripe/react-stripe-js";
 
 const iframeStyles = {
   base: {
-    marginTop: "1rem",
     color: "#1e3a8a",
-    fontSize: "1.5rem",
+    fontSize: "20px",
     iconColor: "#1e3a8a",
     "::placeholder": {
       color: "#87bbfd",
@@ -26,7 +25,7 @@ const cardElementOpts = {
   hidePostalCode: true,
 };
 
-const StripeForm = ({ price, placeOrderHandler, isLoading }) => {
+const StripeForm = ({ price, placeOrderHandler, isLoading, disableButton }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -56,7 +55,7 @@ const StripeForm = ({ price, placeOrderHandler, isLoading }) => {
         <button
           className="button button-primary"
           onClick={(e) => createPaymentMethod()}
-          disabled={!stripe}
+          disabled={!stripe || disableButton}
         >
           {isLoading ? <i className="fa fa-spinner fa-spin"></i> : ""} Pay{" "}
           {price}

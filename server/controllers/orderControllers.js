@@ -10,10 +10,21 @@ dotenv.config();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 /***
+@desc Get Stripe key 
+@route POST /api/key
+@access Public
+**/
+
+export const getKey = AsyncHandler(async (req, res) => {
+  res.status(201).json({ key: process.env.STRIPE_PUBLIC_KEY });
+});
+
+/***
 @desc Place orders 
 @route POST /api/orders
 @access Private
 **/
+
 export const placeOrders = AsyncHandler(async (req, res) => {
   const { orderItem } = req.body;
 

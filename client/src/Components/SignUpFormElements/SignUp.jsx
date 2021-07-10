@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 const SignUp = ({
   signUpSelected,
@@ -14,6 +14,8 @@ const SignUp = ({
   loading,
   error,
 }) => {
+  const [isChecked, setIsChecked] = useState(false);
+
   return (
     <div>
       <div id="id01" className="modal">
@@ -85,10 +87,11 @@ const SignUp = ({
             <label>
               <input
                 type="checkbox"
-                defaultChecked="checked"
+                defaultChecked={isChecked}
                 name="remember"
                 style={{ marginBottom: 15 }}
-              />{" "}
+                onChange={() => setIsChecked(!isChecked)}
+              />
               Remember me
             </label>
 
@@ -110,6 +113,7 @@ const SignUp = ({
                 type="submit"
                 className="signup button button-primary"
                 style={{ width: "100%", marginBottom: "1rem" }}
+                disabled={!isChecked}
               >
                 {loading ? (
                   <i className="fa fa-spinner fa-spin"></i>

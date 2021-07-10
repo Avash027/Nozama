@@ -50,6 +50,7 @@ const OrderPanel = () => {
   else if (errorPanel) ordersElements = <Error></Error>;
   else if (orders.length === 0) ordersElements = <h2>No orders</h2>;
   else {
+    console.log(orders);
     ordersElements = (
       <>
         {orders.map(
@@ -62,6 +63,7 @@ const OrderPanel = () => {
             isDelivered,
             _id,
             deliveredAt,
+            stripeID,
           }) => (
             <div className="admin-panel" key={_id}>
               <div className="admin-panel-element-up">
@@ -70,10 +72,7 @@ const OrderPanel = () => {
                   <hr />
                   {orderItems &&
                     orderItems.map(({ name, qty }) => (
-                      <div
-                        key={_id + name + qty}
-                        className=""
-                      >{`${name} (${qty})`}</div>
+                      <div key={_id + name + qty}>{`${name} (${qty})`}</div>
                     ))}
                 </div>
 
@@ -90,14 +89,23 @@ const OrderPanel = () => {
                 </div>
 
                 {userInfo && userInfo && (
-                  <div className="admin-panel-user">{`User ID :  ${user}`}</div>
+                  <div className="admin-panel-user">{`Stripe Payment ID :  ${stripeID}`}</div>
                 )}
 
                 <div className="admin-panel-orderedAt">
                   {`Ordered At : ${createdAt}`}
                 </div>
 
-                <div className="admin-panel-delivered">
+                <div
+                  className="admin-panel-delivered"
+                  style={
+                    !isDelivered && {
+                      color: "Red",
+                      backgroundColor: "white",
+                      borderRadius: "5px",
+                    }
+                  }
+                >
                   Delivery Status :{" "}
                   {isDelivered ? "Delivered" : "Not yet Delivered"}
                 </div>

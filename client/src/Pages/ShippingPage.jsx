@@ -7,15 +7,10 @@ import NotificationSystem from "react-notification-system";
 
 import { removeFromCartAll } from "../actions/cartActions";
 import { _PlaceOrder, _updateProductsQty } from "../utils/ShippingPageAPI";
-import { STRIPE_KEY } from "../utils/secretKey";
 import Rupees from "../utils/Rupees";
 
 import StripeForm from "../Components/shippingPageElements/StripeForm";
-
-const stripePromise = loadStripe(STRIPE_KEY);
-
-//TODO Check shipping page functionality
-//TODO Add stripe public key to process env file and load it using run time
+import axios from "axios";
 
 const ShippingPage = ({ history }) => {
   const dispatch = useDispatch();
@@ -35,6 +30,18 @@ const ShippingPage = ({ history }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
+  const [disableButton, setDisableButton] = useState(false);
+  const [stripePublicKey, setstripePublicKey] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.get("/api/orders/key");
+      setstripePublicKey(data.key);
+    })();
+  }, []);
+
+  let stripePromise;
+  if (stripePublicKey.length !== 0) stripePromise = loadStripe(stripePublicKey);
 
   useEffect(() => {
     if (!success) return;
@@ -52,6 +59,7 @@ const ShippingPage = ({ history }) => {
 
   const placeOrderHandler = async (stripeID) => {
     setIsLoading(true);
+    setDisableButton(true);
     const [, error] = await _PlaceOrder(
       address,
       city,
@@ -70,6 +78,7 @@ const ShippingPage = ({ history }) => {
     }
 
     setIsLoading(false);
+    setDisableButton(false);
 
     dispatch(removeFromCartAll());
     setSuccess(true);
@@ -99,6 +108,7 @@ const ShippingPage = ({ history }) => {
             placeholder="Address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            required={true}
           />
           <br />
 
@@ -112,17 +122,19 @@ const ShippingPage = ({ history }) => {
             placeholder="City"
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            required={true}
           />
           <br />
 
           <label className="shipping-label">Postal Code</label>
           <br />
           <input
-            type="text"
+            type="number"
             className="shipping-input"
             placeholder="Postal Code"
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
+            required={true}
           />
 
           <br />
@@ -135,6 +147,7 @@ const ShippingPage = ({ history }) => {
             placeholder="Country"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
+            required={true}
           />
 
           <br />
@@ -164,13 +177,16 @@ const ShippingPage = ({ history }) => {
             ))}
           </div>
 
-          <Elements stripe={stripePromise}>
-            <StripeForm
-              price={Rupees(price)}
-              placeOrderHandler={placeOrderHandler}
-              isLoading={isLoading}
-            />
-          </Elements>
+          {stripePublicKey.length !== 0 && (
+            <Elements stripe={stripePromise}>
+              <StripeForm
+                price={Rupees(price)}
+                placeOrderHandler={placeOrderHandler}
+                isLoading={isLoading}
+                disableButton={disableButton}
+              />
+            </Elements>
+          )}
         </div>
       </div>
     </div>
