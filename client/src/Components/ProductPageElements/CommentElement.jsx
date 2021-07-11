@@ -1,12 +1,10 @@
 import React from "react";
 import Rating from "../Others/Rating";
 
-//TODO Delete button only shows up for user who made the comment
-
 const CommentElement = ({
   userReview,
   deleteReviewSubmitHandler,
-  currentUserID,
+  currentUser,
 }) => {
   return (
     <div key={userReview._id} className="comment-user-reviews-main">
@@ -17,7 +15,7 @@ const CommentElement = ({
         </div>
         <div className="comment-user-review">{userReview.comment}</div>
       </div>
-      {currentUserID === userReview.user && (
+      {currentUser && currentUser._id === userReview.user && (
         <div className="comment-user-right" onClick={deleteReviewSubmitHandler}>
           <span className="comment-user-delete">&times;</span>
         </div>
