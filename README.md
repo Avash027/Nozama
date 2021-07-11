@@ -2,7 +2,7 @@
 
 ~~Under production. Not yet hosted. Will be hosting soon~~
 
-Check out the website [here](https://nozamaapp.herokuapp.com)
+Check out the website **[here](https://nozamaapp.herokuapp.com)**
 
 ## Features
 
@@ -39,19 +39,19 @@ Check out the website [here](https://nozamaapp.herokuapp.com)
 
 ## Install this project
 
-```
+```bash
 git clone https://github.com/Avash027/Nozama.git
 ```
 
-```
+```bash
 cd project
 ```
 
 To install all the dependencies
 
-Run the command in the root directory and the client directory
+Run the command in the **root directory and the client directory**
 
-```
+```bash
 npm install
 ```
 
@@ -83,6 +83,7 @@ npm run dev
 7. [Mongoose](https://mongoosejs.com/docs/)
 8. [MongoDB](https://docs.mongodb.com/)
 9. [NodeJS](https://nodejs.org/en/docs/)
+10. [Stripe](https://stripe.com/docs)
 
 ## Authors
 

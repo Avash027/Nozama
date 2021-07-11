@@ -133,6 +133,7 @@ const CommentSection = ({ productID, setComment, reviews, history }) => {
               key={userReview._id}
               userReview={userReview}
               deleteReviewSubmitHandler={deleteReviewSubmitHandler}
+              currentUserID={userInfo._id}
             />
           ))}
       </div>

@@ -3,7 +3,11 @@ import Rating from "../Others/Rating";
 
 //TODO Delete button only shows up for user who made the comment
 
-const CommentElement = ({ userReview, deleteReviewSubmitHandler }) => {
+const CommentElement = ({
+  userReview,
+  deleteReviewSubmitHandler,
+  currentUserID,
+}) => {
   return (
     <div key={userReview._id} className="comment-user-reviews-main">
       <div className="comment-user-left">
@@ -13,9 +17,11 @@ const CommentElement = ({ userReview, deleteReviewSubmitHandler }) => {
         </div>
         <div className="comment-user-review">{userReview.comment}</div>
       </div>
-      <div className="comment-user-right" onClick={deleteReviewSubmitHandler}>
-        <span className="comment-user-delete">&times;</span>
-      </div>
+      {currentUserID === userReview.user && (
+        <div className="comment-user-right" onClick={deleteReviewSubmitHandler}>
+          <span className="comment-user-delete">&times;</span>
+        </div>
+      )}
     </div>
   );
 };

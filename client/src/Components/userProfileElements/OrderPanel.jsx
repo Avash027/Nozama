@@ -7,6 +7,8 @@ import {
   _updateDeliveryStatusUtil,
 } from "../../utils/orderPanelAPI";
 
+import OrderItem from "./OrderItem";
+
 const Loading = loadable(() => import("../Others/Loading"));
 const Error = loadable(() => import("../Others/Error"));
 
@@ -53,87 +55,13 @@ const OrderPanel = () => {
     console.log(orders);
     ordersElements = (
       <>
-        {orders.map(
-          ({
-            orderItems,
-            totalPrice,
-            shippingAddress,
-            user,
-            createdAt,
-            isDelivered,
-            _id,
-            deliveredAt,
-            stripeID,
-          }) => (
-            <div className="admin-panel" key={_id}>
-              <div className="admin-panel-element-up">
-                <div className="admin-panel-names">
-                  Product Name
-                  <hr />
-                  {orderItems &&
-                    orderItems.map(({ name, qty }, idx) => (
-                      <div key={idx}>{`${name} (${qty})`}</div>
-                    ))}
-                </div>
-
-                <div className="admin-panel-price">
-                  Total Price
-                  <hr />
-                  Rs {totalPrice}
-                </div>
-              </div>
-
-              <div className="admin-panel-element-down">
-                <div className="admin-panel-shipping-address">
-                  {`Shipping Address : ${shippingAddress.address}, ${shippingAddress.postalCode}, ${shippingAddress.city}, ${shippingAddress.country}`}
-                </div>
-
-                {userInfo && (
-                  <div className="admin-panel-user">{`User ID :  ${user}`}</div>
-                )}
-
-                <div className="admin-panel-orderedAt">
-                  {`Ordered At : ${createdAt}`}
-                </div>
-
-                <div
-                  className="admin-panel-delivered"
-                  style={
-                    !isDelivered
-                      ? {
-                          color: "Red",
-                          backgroundColor: "white",
-                          borderRadius: "5px",
-                        }
-                      : {
-                          color: "Green",
-                          backgroundColor: "white",
-                          borderRadius: "5px",
-                        }
-                  }
-                >
-                  Delivery Status :{" "}
-                  {isDelivered ? "Delivered" : "Not yet Delivered"}
-                </div>
-
-                {!isDelivered && userInfo && userInfo.isAdmin && (
-                  <div
-                    className="admin-panel-delivery-container"
-                    onClick={() => updateDeliveryStatus(_id)}
-                  >
-                    <i className="far fa-check-circle"></i> Order Delivered
-                  </div>
-                )}
-
-                {isDelivered && deliveredAt && (
-                  <div className="admin-panel-delivery-date">
-                    {`Delivered on : ${deliveredAt}`}
-                  </div>
-                )}
-              </div>
-            </div>
-          )
-        )}
+        {orders.map((order) => (
+          <OrderItem
+            data={order}
+            userInfo={userInfo}
+            updateDeliveryStatus={updateDeliveryStatus}
+          />
+        ))}
       </>
     );
   }

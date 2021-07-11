@@ -39,9 +39,7 @@ const SignUp = ({
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
 
-            {error && (
-              <div className="signup-error">Invalid email or password</div>
-            )}
+            {error && <div className="signup-error">Email already in use</div>}
 
             <hr className="sign-up-hr" />
 

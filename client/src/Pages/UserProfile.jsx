@@ -101,7 +101,12 @@ const UserProfile = ({ history }) => {
         <button
           className="button button-primary user-profile-button"
           onClick={(e) => updateUserHandler(e)}
-          disabled={repPass !== pass}
+          disabled={
+            repPass !== pass ||
+            pass.length === 0 ||
+            email.length === 0 ||
+            Name.length === 0
+          }
         >
           {loading ? (
             <i className="fa fa-spinner fa-spin"></i>

@@ -1,9 +1,6 @@
 import AsyncHandler from "express-async-handler";
 import Product from "../models/productModel.js";
 import updateRating from "../utils/updateRating.js";
-import NodeCache from "node-cache";
-
-const productCache = new NodeCache();
 
 /***
 @desc Sends all products
@@ -11,13 +8,8 @@ const productCache = new NodeCache();
 @access Public
 **/
 const getProducts = AsyncHandler(async (req, res) => {
-  if (productCache.get("products")) {
-    res.status(200).json(productCache.get("products"));
-  } else {
-    const products = await Product.find({});
-    productCache.set("products", products, 1000);
-    res.status(200).json(products);
-  }
+  const products = await Product.find({});
+  res.status(200).json(products);
 });
 
 /***
@@ -89,6 +81,12 @@ const addReviews = AsyncHandler(async (req, res) => {
     res.status(200).send(updatedProductInformation);
   else res.status(401).json({ message: "Invalid request" });
 });
+
+/***
+@desc Delete reviews of a product 
+@route POST /api/products/deletereviews
+@access Private
+**/
 
 /***
 @desc Delete reviews of a product 
