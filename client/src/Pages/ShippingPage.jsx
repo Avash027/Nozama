@@ -33,6 +33,7 @@ const ShippingPage = ({ history }) => {
   const [disableButton, setDisableButton] = useState(false);
   const [stripePublicKey, setstripePublicKey] = useState("");
 
+  //This gets the public key from the database
   useEffect(() => {
     (async () => {
       const { data } = await axios.get("/api/orders/key");
@@ -79,7 +80,7 @@ const ShippingPage = ({ history }) => {
 
     setIsLoading(false);
     setDisableButton(false);
-
+    //All the items in the cart have been ordered so they must be removed
     dispatch(removeFromCartAll());
     setSuccess(true);
   };

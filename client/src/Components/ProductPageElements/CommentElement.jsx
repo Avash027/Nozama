@@ -1,4 +1,8 @@
-import React from "react";
+/***
+ * @description : It shows a particular comment. It only shows the delete button if the signed in user
+ * is same as the user who made the comment
+ */
+
 import Rating from "../Others/Rating";
 
 const CommentElement = ({

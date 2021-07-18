@@ -1,15 +1,11 @@
 # Nozama (MERN Stack E-Commerce Web App)
 
-~~Under production. Not yet hosted. Will be hosting soon~~
-
 Check out the website **[here](https://nozamaapp.herokuapp.com)**
 
 ## Features
 
-<hr>
-
-1. Sliding Window Rate Limiter (using Node cache memory) to control traffic
-2. Fixed Window Rate Limiter (using Node cache memory) for IP banning
+1. **Sliding Window Rate Limiter** (using Node cache memory) to control traffic
+2. **Fixed Window Rate Limiter** (using Node cache memory) for IP banning
 3. JWT Authentication
 4. Customers can add items to cart and change the quantity from the cart page
 5. All orders history is also available to the user along with relevant information
@@ -21,21 +17,37 @@ Check out the website **[here](https://nozamaapp.herokuapp.com)**
 
 ## Tech Stack used
 
-<hr>
+1. **ReactJS** for front-end
+2. **Redux** for state management
+3. **SASS** for CSS pre processing
+4. **Redux thunk** middleware for asynchronus redux actions
+5. **React router** for routing to different pages
+6. **Express** middleware on the backened to handle routes and requests
+7. **Mongoose** for the database schema and performing operations
+8. **MongoDB** used as a database
 
-1. ReactJS for front-end
-2. Redux for state management
-3. SASS for CSS pre processing
-4. Redux thunk middleware for asynchronus redux actions
-5. React router for routing to different pages
-6. Express middleware on the backened to handle routes and requests
-7. Mongoose for the database schema and performing operations
-8. MongoDB used as a database
+## API Documentation
+
+| Type |                Route                |     Access     |                                            Description                                             |
+| :--: | :---------------------------------: | :------------: | :------------------------------------------------------------------------------------------------: |
+| GET  |             /api/orders             |    Private     | Returns a list of all the user has made. If the request is made by admin it returns all the orders |
+| GET  |            /api/products            |     Public     |                                      Returns all the products                                      |
+| GET  |         /api/products/{id}          |     Public     |                              Returns a specific product as per the id                              |
+| GET  |         /api/users/profile          |    Private     |                        Returns the details of the currently logged in user                         |
+| POST |              /api/key               |     Public     |                                   Returns the Public stripe key                                    |
+| POST |             /api/orders             |    Private     |                 It stores the order details and makes a payment intent with stripe                 |
+| POST |          /api/products/add          | Private(Admin) |                                 Adds a new product to the database                                 |
+| POST |        /api/products/reviews        |    Private     |                          Adds a review for a product by a logged in user                           |
+| POST | /api/products/reviews/deletereviews |    Private     |                        Deletes the comment (if any) made by logged in user                         |
+| POST |       /api/products/updateQty       |    Private     |                         Updates the product stock when an order is palced                          |
+| POST |        /api/products/delete         | Private(Admin) |                                Delete the product from the database                                |
+| POST |          /api/users/login           |     Public     |             Checks for credentials and send JWT token for further requests by the user             |
+| POST |         /api/users/register         |     Public     |                       Validates the information and add new user to database                       |
+| PUT  |         /api/users/profile          |    Private     |                                      Updates the user details                                      |
 
 ## Future plans for this project
 
 1. UI works for now at least, although I want to make it more polished. Maybe work on UI a bit later (After getting my hands on Figma).
-2. ~~Stripe is something I will be adding to this project.~~
 
 ## Install this project
 
@@ -59,7 +71,7 @@ Now create a .env file in the root directory
 
 ```
 NODE_ENV = (production/deployment as per the use)
-PORT = (Port for the server)
+PORT = (Port of the server)
 MONGO_URI = (Database URL provided by the MonogDB atlas)
 SECRET_KEY = (For JWT Authentication)
 STRIPE_SECRET_KEY  = (Secret Key provided by stripe)
@@ -68,7 +80,7 @@ STRIPE_PUBLIC_KEY  = (Public Key provided by stripe)
 
 To run the project on the local machine
 
-```
+```bash
 npm run dev
 ```
 

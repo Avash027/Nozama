@@ -1,5 +1,3 @@
-import React from "react";
-
 const CarouselElements = ({ product }) => {
   return (
     <div className="slider-element" key={product._id}>

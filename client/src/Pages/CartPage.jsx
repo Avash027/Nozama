@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import loadable from "@loadable/component";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../actions/cartActions";
@@ -11,6 +11,7 @@ const Loading = loadable(() => import("../Components/Others/Loading"));
 
 const CartPage = ({ match, location, history }) => {
   const productIDfromTheURL = match.params.id;
+  //If a product is being added to cart then this gets the quantity. Default is 1
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
 
   const dispatch = useDispatch();

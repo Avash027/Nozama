@@ -1,17 +1,23 @@
-import React , {useState} from 'react'
+import { useState } from "react";
 
 const Error = () => {
+  const [isVisible, setIsVisible] = useState(true);
 
-    const [isVisible, setIsVisible] = useState(true)        
-
-    return (
-        <div>
-            { isVisible && <div className="alert">
-            <span className="alert-closebtn" onClick={e=>setIsVisible(!isVisible)} >&times;</span>
-                Oops!! Please refresh the page
-            </div>}
+  return (
+    <div>
+      {isVisible && (
+        <div className="alert">
+          <span
+            className="alert-closebtn"
+            onClick={(e) => setIsVisible(!isVisible)}
+          >
+            &times;
+          </span>
+          Oops!! Please refresh the page
         </div>
-    )
-}
+      )}
+    </div>
+  );
+};
 
-export default Error
+export default Error;

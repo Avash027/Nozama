@@ -11,9 +11,6 @@ const SearchItemElement = loadable(() =>
   import("../Components/SearchPageElements/SearchItemElement")
 );
 
-//TODO Fix bug that sometimes search does not work
-//TODO Format the curreny and make it more responsive
-
 const SearchPage = ({ history, match }) => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
@@ -49,10 +46,10 @@ const SearchPage = ({ history, match }) => {
   } else if (loading) {
     searchedItems = <Loading></Loading>;
   } else if (!loading && products.length === 0) {
-    searchedItems = <h2>No items found</h2>;
+    searchedItems = <h2 style={{ textAlign: "center" }}>No items found</h2>;
   }
 
-  return <div>{searchedItems}</div>;
+  return <>{searchedItems}</>;
 };
 
 export default SearchPage;

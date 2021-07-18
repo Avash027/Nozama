@@ -9,6 +9,13 @@ import {
   SPECIFIC_PRODUCT_ERROR,
 } from "../constants/productConstants.js";
 
+/***
+ * @description : It adds all the products to the global state
+ * @argument none
+ * @returns none
+ * @async yes
+ */
+
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: GET_ALL_PRODUCTS });
@@ -21,13 +28,17 @@ export const listProducts = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_ERROR_OCCURED,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: { Error: "Products could not be fetched" },
     });
   }
 };
+
+/***
+ * @description : It adds a sepecific product to the global state
+ * @argument _id
+ * @returns none
+ * @async yes
+ */
 
 export const ProductDetails = (_id) => async (dispatch) => {
   try {
@@ -42,10 +53,7 @@ export const ProductDetails = (_id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: SPECIFIC_PRODUCT_ERROR,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: { Error: "Products could not be fetched" },
     });
   }
 };

@@ -6,6 +6,14 @@ import {
   REMOVE_ITEM_FROM_CART_ALL,
 } from "../constants/cartConstants";
 
+/***
+ * @description : It adds a specific product to the cart of the user. If the time is already
+ * present then the amount is updated
+ * @arguments id qty
+ * @returns none
+ * @async yes
+ */
+
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/products/${id}`);
 
@@ -24,6 +32,13 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };
 
+/***
+ * @description : It removes the item with the specific id from the cart
+ * @argument id
+ * @returns none
+ * @async no
+ */
+
 export const removeFromCart = (id) => async (dispatch, getState) => {
   dispatch({
     type: REMOVE_ITEM_FROM_CART,
@@ -34,6 +49,13 @@ export const removeFromCart = (id) => async (dispatch, getState) => {
 
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };
+
+/***
+ * @description : It removes all the item from the cart
+ * @argument none
+ * @returns none
+ * @async no
+ */
 
 export const removeFromCartAll = () => async (dispatch, getState) => {
   dispatch({

@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+/***
+ * @description : Shows a particular item in cart and  also allows user to update quantity and delete the
+ * product
+ */
+
+import { useState } from "react";
 import Rupees from "../../utils/Rupees";
 
 const CartItem = ({ item, changeItemQuantity, removeFromCartHandler }) => {

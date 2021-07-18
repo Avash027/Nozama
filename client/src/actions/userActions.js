@@ -12,6 +12,14 @@ import {
   USER_SIGNUP_SUCCESS,
 } from "../constants/userConstants";
 
+/***
+ * @description : It sends a login request to server with email and password. If the credentials are correct
+ * userInfo is added to global state else error message is throws
+ * @arguments email password
+ * @returns none
+ * @async yes
+ */
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
@@ -43,6 +51,14 @@ export const login = (email, password) => async (dispatch) => {
     });
   }
 };
+
+/***
+ * @description : It sends a signup request to server with email, password and name. If the credentials are correct
+ * userInfo is added to global state else error message is throws
+ * @arguments email password name
+ * @returns none
+ * @async yes
+ */
 
 export const signup = (name, email, password) => async (dispatch) => {
   try {
@@ -85,6 +101,13 @@ export const signup = (name, email, password) => async (dispatch) => {
   }
 };
 
+/***
+ * @description : Removes userInfo from the global state
+ * @arguments none
+ * @returns none
+ * @async yes
+ */
+
 export const logout = () => async (dispatch) => {
   dispatch({
     type: USER_LOGOUT,
@@ -92,6 +115,14 @@ export const logout = () => async (dispatch) => {
 
   localStorage.setItem("userInfo", "");
 };
+
+/***
+ * @description : It sends an update request to server with email, password,id,name. If the credentials are correct
+ * then updated userInfo is added to global state else error message is throws
+ * @arguments email password id name
+ * @returns none
+ * @async yes
+ */
 
 export const updateUser = (id, name, email, password) => async (dispatch) => {
   try {

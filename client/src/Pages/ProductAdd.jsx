@@ -20,10 +20,6 @@ const DeleteProductItem = loadable(() =>
 const Error = loadable(() => import("../Components/Others/Error"));
 const Loading = loadable(() => import("../Components/Others/Loading"));
 
-//TODO : Check the add and delete handler once
-//TODO Fix key prop in product delete
-//TODO only numbers allowed in price and stock
-
 const ProductAdd = ({ history }) => {
   const dispatch = useDispatch();
   const notificationSystem = React.createRef();
@@ -142,6 +138,7 @@ const ProductAdd = ({ history }) => {
       <div className="product-delete">
         {products.map((product) => (
           <DeleteProductItem
+            key={product._id}
             product={product}
             deleteProductHandler={deleteProductHandler}
           />

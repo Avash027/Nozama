@@ -1,4 +1,3 @@
-import React from "react";
 import Rupees from "../../utils/Rupees";
 
 const SearchItemElement = ({ product, redirectHandler }) => {

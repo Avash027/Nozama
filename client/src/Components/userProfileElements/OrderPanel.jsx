@@ -12,8 +12,6 @@ import OrderItem from "./OrderItem";
 const Loading = loadable(() => import("../Others/Loading"));
 const Error = loadable(() => import("../Others/Error"));
 
-//TODO add order item to separate file
-
 const OrderPanel = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;

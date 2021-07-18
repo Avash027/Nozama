@@ -1,4 +1,9 @@
-import React from "react";
+/***
+ * @description : Display the particular product and also a delete button to remove element from database
+ * @arguments product deleteProductHandler
+ * @returns React Component
+ * @async no
+ */
 
 const DeleteProductItem = ({ product, deleteProductHandler }) => {
   return (

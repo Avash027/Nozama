@@ -32,6 +32,7 @@ const HomePage = () => {
   useEffect(() => {
     if (!products) return;
 
+    //This is to select the products of the particular page
     setProductsListForPage(
       products.filter((product, index) => {
         return (

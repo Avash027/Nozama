@@ -1,3 +1,7 @@
+/**
+ * Read about it here : https://nlogn.in/design-a-scalable-rate-limiting-algorithm-system-design/
+ */
+
 import NodeCache from "node-cache";
 import dotenv from "dotenv";
 import { blackList_User } from "../fixedWindowRateLimiter/fixedWindowRateLimiter.js";
@@ -67,8 +71,6 @@ const slidingWindowRateLimiter = (req, res, next) => {
 
   /**
    * approxRate  = (ticketcount in previous window)*(size of current window) + ticket count in current window
-   * Check for the formula
-   * https://nlogn.in/design-a-scalable-rate-limiting-algorithm-system-design/
    */
 
   const slidingWindowSize =

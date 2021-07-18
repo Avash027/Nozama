@@ -76,6 +76,12 @@ export const getUser = AsyncHandler(async (req, res) => {
   res.send(user);
 });
 
+/***
+@desc return user profile
+@route PUT /api/users/profile
+@access Private
+**/
+
 export const updateUser = AsyncHandler(async (req, res) => {
   let user = await User.findById(req.body._id);
 

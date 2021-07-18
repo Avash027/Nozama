@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-//TODO Remove old orders from the orders database
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 /***
@@ -51,7 +49,7 @@ export const placeOrders = AsyncHandler(async (req, res) => {
 });
 
 /***
-@desc Get past orders orders 
+@desc Get past orders  
 @route GET /api/orders
 @access Private
 **/

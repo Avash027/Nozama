@@ -36,7 +36,7 @@ const getProductByID = AsyncHandler(async (req, res) => {
 
 /***
 @desc Add new Products by admin 
-@route GET /api/products/add
+@route POST /api/products/add
 @access Private(Admin only)
 **/
 
@@ -81,12 +81,6 @@ const addReviews = AsyncHandler(async (req, res) => {
     res.status(200).send(updatedProductInformation);
   else res.status(401).json({ message: "Invalid request" });
 });
-
-/***
-@desc Delete reviews of a product 
-@route POST /api/products/deletereviews
-@access Private
-**/
 
 /***
 @desc Delete reviews of a product 

@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+/***
+ * @description : It shows different options to the user. If the user is admin it also shows user
+ * the option to edit products
+ */
+
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../actions/userActions";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { useStripe, CardElement, useElements } from "@stripe/react-stripe-js";
 
 const iframeStyles = {

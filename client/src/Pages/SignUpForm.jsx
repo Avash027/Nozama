@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import loadable from "@loadable/component";
 import { login, signup } from "../actions/userActions";
@@ -76,7 +76,7 @@ const SignUpForm = ({ history, location }) => {
       />
     );
   }
-  return <React.Fragment>{elemToBeRendered}</React.Fragment>;
+  return <>{elemToBeRendered}</>;
 };
 
 export default SignUpForm;

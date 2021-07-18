@@ -1,12 +1,7 @@
-import React from "react";
-
-
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-text">
-        Copyright &copy; Nozama
-      </div>
+      <div className="footer-text">Copyright &copy; Nozama</div>
     </footer>
   );
 };
