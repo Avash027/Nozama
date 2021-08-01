@@ -1,6 +1,6 @@
 # Nozama (MERN Stack E-Commerce Web App)
 
-Check out the website **[here](https://nozamaapp.herokuapp.com)**
+Check out the website **_[here](https://nozamaapp.herokuapp.com)_**
 
 ## Features
 

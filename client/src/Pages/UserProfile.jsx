@@ -45,6 +45,7 @@ const UserProfile = ({ history }) => {
         <input
           type="text"
           className="user-profile-input"
+          data-testid="user-profile-name"
           id="nametag"
           value={Name}
           onChange={(e) => setName(e.target.value)}
@@ -59,6 +60,7 @@ const UserProfile = ({ history }) => {
         <input
           type="email"
           className="user-profile-input"
+          data-testid="user-profile-email"
           id="emailtag"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -73,6 +75,7 @@ const UserProfile = ({ history }) => {
         <input
           type="password"
           className="user-profile-input"
+          data-testid="user-profile-password"
           id="passtag"
           value={pass}
           onChange={(e) => setPass(e.target.value)}
@@ -87,6 +90,7 @@ const UserProfile = ({ history }) => {
         <input
           type="password"
           className="user-profile-input"
+          data-testid="user-profile-repassword"
           id="passreptag"
           value={repPass}
           onChange={(e) => setRepPass(e.target.value)}
@@ -101,6 +105,7 @@ const UserProfile = ({ history }) => {
         <button
           className="button button-primary user-profile-button"
           onClick={(e) => updateUserHandler(e)}
+          data-testid="user-profile-button"
           disabled={
             repPass !== pass ||
             pass.length === 0 ||

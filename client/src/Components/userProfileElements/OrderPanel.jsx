@@ -21,6 +21,7 @@ const OrderPanel = () => {
 
   useEffect(() => {
     const getOrders = async () => {
+      if (!userInfo) return setErrorPanel(true);
       const orderDetails = await _getOrdersUtil(userInfo.token);
       if (orderDetails) {
         setOrders(orderDetails);
