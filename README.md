@@ -14,6 +14,7 @@ Check out the website **[here](https://nozamaapp.herokuapp.com)**
 8. Admin control to add and delete products
 9. Admin also confirms the delivery of order
 10. Stripe api integrated. Currently allows only credit card
+11. Currently adding unit tests and integration test for various components
 
 ## Tech Stack used
 

@@ -32,11 +32,19 @@ const Header = () => {
           placeholder="Phones,Laptops"
           className="header-input"
           value={search}
+          data-testid="header-input"
           onChange={(e) => setSearch(e.target.value)}
           required={true}
         ></input>
 
-        <a href={`/search/${encodeURI(search)}`} className="header-search">
+        <a
+          href={`/search/${encodeURI(search)}`}
+          className="header-search"
+          data-testid="test-searchButton"
+          style={{
+            pointerEvents: search.length !== 0 ? "auto" : "none",
+          }}
+        >
           <i className="fas fa-search"></i>
         </a>
       </div>
