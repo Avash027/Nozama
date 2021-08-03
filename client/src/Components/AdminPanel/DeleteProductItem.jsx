@@ -14,7 +14,9 @@ const DeleteProductItem = ({ product, deleteProductHandler }) => {
         className="product-delete-button-container"
         onClick={(e) => deleteProductHandler(product._id)}
       >
-        <div className="product-delete-button">&times;</div>
+        <div data-testid="delete-button" className="product-delete-button">
+          &times;
+        </div>
       </div>
     </div>
   );
