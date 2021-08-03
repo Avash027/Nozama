@@ -14,7 +14,6 @@ Check out the website **_[here](https://nozamaapp.herokuapp.com)_**
 8. Admin control to add and delete products
 9. Admin also confirms the delivery of order
 10. Stripe api integrated. Currently allows only credit card
-11. Currently adding unit tests and integration test for various components
 
 ## Tech Stack used
 
@@ -26,6 +25,10 @@ Check out the website **_[here](https://nozamaapp.herokuapp.com)_**
 6. **Express** middleware on the backened to handle routes and requests
 7. **Mongoose** for the database schema and performing operations
 8. **MongoDB** used as a database
+
+## Currently working on
+
+1. Currently adding unit tests and integration test for various components
 
 ## API Documentation
 
