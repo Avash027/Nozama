@@ -35,6 +35,8 @@ const ShippingPage = ({ history }) => {
 
   //This gets the public key from the database
   useEffect(() => {
+    document.title = "Shipping | Nozama";
+
     (async () => {
       const { data } = await axios.get("/api/orders/key");
       setstripePublicKey(data.key);

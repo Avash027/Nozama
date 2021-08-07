@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const Login = ({
   setSignUpSelected,
   email,
@@ -10,7 +12,9 @@ const Login = ({
   error,
   loading,
 }) => {
-  if (loading) console.log(loading);
+  useEffect(() => {
+    document.title = "Login | Nozama";
+  }, []);
 
   return (
     <div>

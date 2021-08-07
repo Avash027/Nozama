@@ -23,6 +23,11 @@ const ProductPage = ({ history, match }) => {
   const { loading, error, product } = productDetails;
 
   useEffect(() => {
+    if (!product) return;
+    document.title = product.name;
+  }, [product]);
+
+  useEffect(() => {
     dispatch(ProductDetails(match.params.id));
   }, [dispatch, match, comment]);
 

@@ -22,6 +22,10 @@ const CartPage = ({ match, location, history }) => {
   const { cartItems } = cart;
 
   useEffect(() => {
+    document.title = "Cart | Nozama";
+  }, []);
+
+  useEffect(() => {
     if (productIDfromTheURL) {
       dispatch(addToCart(productIDfromTheURL, qty));
     }

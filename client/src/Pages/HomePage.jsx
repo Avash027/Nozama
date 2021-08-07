@@ -26,6 +26,10 @@ const HomePage = () => {
   const [productsListForPage, setProductsListForPage] = useState([]);
 
   useEffect(() => {
+    document.title = "Nozama";
+  }, []);
+
+  useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
 

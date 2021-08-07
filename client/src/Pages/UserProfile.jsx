@@ -26,6 +26,7 @@ const UserProfile = ({ history }) => {
     } else {
       setName(userInfo.name);
       setEmail(userInfo.email);
+      document.title = `${userInfo.name}`;
     }
   }, [userInfo, history]);
 

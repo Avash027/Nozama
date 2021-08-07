@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SignUp = ({
   signUpSelected,
@@ -15,6 +15,10 @@ const SignUp = ({
   error,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    document.title = "Signup | Nozama";
+  }, []);
 
   return (
     <div>
