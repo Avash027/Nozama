@@ -7,18 +7,8 @@
  */
 
 const AddProduct = ({
-  name,
-  setName,
-  brand,
-  setBrand,
-  category,
-  setCategory,
-  description,
-  setDescription,
-  price,
-  setPrice,
-  stock,
-  setStock,
+  dispatch,
+  state,
   convertImageToBase64,
   AddProductSubmitHandler,
 }) => {
@@ -31,8 +21,10 @@ const AddProduct = ({
           type="text"
           className="product-add-input"
           placeholder="Product Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={state.name}
+          onChange={(e) =>
+            dispatch({ type: "SET_NAME", payload: e.target.value })
+          }
           required={true}
         />
 
@@ -44,8 +36,10 @@ const AddProduct = ({
           type="text"
           className="product-add-input"
           placeholder="Product Brand"
-          value={brand}
-          onChange={(e) => setBrand(e.target.value)}
+          value={state.brand}
+          onChange={(e) =>
+            dispatch({ type: "SET_BRAND", payload: e.target.value })
+          }
           required={true}
         />
         <br />
@@ -56,8 +50,10 @@ const AddProduct = ({
           type="text"
           className="product-add-input"
           placeholder="Product Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          value={state.category}
+          onChange={(e) =>
+            dispatch({ type: "SET_CATEGORY", payload: e.target.value })
+          }
           required={true}
         />
         <br />
@@ -68,8 +64,10 @@ const AddProduct = ({
           type="text"
           className="product-add-input"
           placeholder="Product Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={state.description}
+          onChange={(e) =>
+            dispatch({ type: "SET_DESCRIPTION", payload: e.target.value })
+          }
           required={true}
         />
         <br />
@@ -80,8 +78,10 @@ const AddProduct = ({
           type="number"
           className="product-add-input"
           placeholder="Product Price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          value={state.price}
+          onChange={(e) =>
+            dispatch({ type: "SET_PRICE", payload: e.target.value })
+          }
           required={true}
         />
         <br />
@@ -92,8 +92,10 @@ const AddProduct = ({
           type="number"
           className="product-add-input"
           placeholder="Product Stock"
-          value={stock}
-          onChange={(e) => setStock(e.target.value)}
+          value={state.stock}
+          onChange={(e) =>
+            dispatch({ type: "SET_STOCK", payload: e.target.value })
+          }
           required={true}
         />
         <br />

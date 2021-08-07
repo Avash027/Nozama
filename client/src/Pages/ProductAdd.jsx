@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import loadable from "@loadable/component";
 import NotificationSystem from "react-notification-system";
+import { reducer, initialState } from "../utils/ProductAddReducer";
 
 import { listProducts } from "../actions/productActions";
 import {
@@ -30,15 +31,10 @@ const ProductAdd = ({ history }) => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
-  const [name, setName] = useState("");
-  const [brand, setBrand] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [stock, setStock] = useState("");
-  const [files, setFiles] = useState("");
-  const [comment, setComment] = useState({});
+  const [comment, setComment] = useState({}); // Used in deleteProduct
   const [toaddProduct, setToaddProduct] = useState(true);
+
+  const [state, dispathProduct] = useReducer(reducer, initialState);
 
   useEffect(() => {
     dispatch(listProducts());
@@ -47,13 +43,13 @@ const ProductAdd = ({ history }) => {
   const AddProductSubmitHandler = async () => {
     const [data, error] = await _AddProductSubmitHandler(
       userInfo._id,
-      name,
-      files,
-      brand,
-      category,
-      description,
-      Number(price),
-      Number(stock),
+      state.name,
+      state.files,
+      state.brand,
+      state.category,
+      state.description,
+      Number(state.price),
+      Number(state.stock),
       userInfo.token
     );
 
@@ -104,7 +100,7 @@ const ProductAdd = ({ history }) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        setFiles(reader.result);
+        dispathProduct({ type: "SET_FILES", payload: reader.result });
       };
       reader.readAsDataURL(file);
     }
@@ -115,18 +111,8 @@ const ProductAdd = ({ history }) => {
   if (toaddProduct) {
     elemToBeRendered = (
       <AddProduct
-        name={name}
-        setName={setName}
-        brand={brand}
-        setBrand={setBrand}
-        category={category}
-        setCategory={setCategory}
-        description={description}
-        setDescription={setDescription}
-        price={price}
-        setPrice={setPrice}
-        stock={stock}
-        setStock={setStock}
+        dispatch={dispathProduct}
+        state={state}
         convertImageToBase64={convertImageToBase64}
         AddProductSubmitHandler={AddProductSubmitHandler}
       />
