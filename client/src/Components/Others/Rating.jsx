@@ -1,3 +1,4 @@
+import { memo } from "react";
 const Rating = ({ value, text }) => {
   return (
     <div className="rating">
@@ -66,4 +67,4 @@ const Rating = ({ value, text }) => {
   );
 };
 
-export default Rating;
+export default memo(Rating);

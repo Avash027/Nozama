@@ -1,3 +1,4 @@
+import { memo } from "react";
 const Loading = () => {
   return (
     <div className="loader-container">
@@ -6,4 +7,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default memo(Loading);

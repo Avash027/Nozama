@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 
 const Error = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -20,4 +20,4 @@ const Error = () => {
   );
 };
 
-export default Error;
+export default memo(Error);

@@ -9,7 +9,7 @@ import {
 /***
  * @description : It adds a specific product to the cart of the user. If the time is already
  * present then the amount is updated
- * @arguments id qty
+ * @arguments id, qty
  * @returns none
  * @async yes
  */
