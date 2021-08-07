@@ -62,7 +62,6 @@ export const login = (email, password) => async (dispatch) => {
 
 export const signup = (name, email, password) => async (dispatch) => {
   try {
-    console.log(name, email, password);
     dispatch({
       type: USER_SIGNUP_REQUEST,
     });
@@ -93,7 +92,6 @@ export const signup = (name, email, password) => async (dispatch) => {
 
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
-    console.log(error.message);
     dispatch({
       type: USER_SIGNUP_FAIL,
       payload: { Error: "User Login failed" },

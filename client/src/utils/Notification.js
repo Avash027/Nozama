@@ -4,7 +4,6 @@ export default function Notification(
   title,
   message
 ) {
-  console.log(notificationSystem);
   const notification = notificationSystem.current;
   notification.addNotification({
     message: message,

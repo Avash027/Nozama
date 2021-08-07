@@ -24,9 +24,7 @@ const SearchPage = ({ history, match }) => {
 
   useEffect(() => {
     if (!products || products.length === 0) return;
-    console.log(products);
     const filteredProducts = _findProductsByName(products, match.params.query);
-    console.log(filteredProducts);
     setSearchResults(filteredProducts);
   }, [products, match]);
 

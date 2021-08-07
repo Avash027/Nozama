@@ -45,7 +45,6 @@ export const userEditReducer = (state = {}, action) => {
     case USER_EDIT_REQUEST:
       return { loading: true };
     case USER_EDIT_SUCCESS:
-      console.log(action.payload);
       return { loading: false, userInfo: action.payload };
     case USER_EDIT_FAIL:
       return { loading: false, error: action.payload };

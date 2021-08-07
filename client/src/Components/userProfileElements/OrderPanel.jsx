@@ -51,7 +51,6 @@ const OrderPanel = () => {
   else if (errorPanel) ordersElements = <Error></Error>;
   else if (orders.length === 0) ordersElements = <h2>No orders</h2>;
   else {
-    console.log(orders);
     ordersElements = (
       <>
         {orders.map((order) => (
