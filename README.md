@@ -82,6 +82,8 @@ STRIPE_SECRET_KEY  = (Secret Key provided by stripe)
 STRIPE_PUBLIC_KEY  = (Public Key provided by stripe)
 ```
 
+**Check out .env.example**
+
 To run the project on the local machine
 
 ```bash

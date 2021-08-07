@@ -68,7 +68,7 @@ const ProductPage = ({ history, match }) => {
           </div>
 
           <div className="product-main-checkout">
-            <div className="product-main-checkout-heading">Checkout Box</div>
+            <div className="product-main-checkout-heading">Cart Box</div>
             <div className="product-main-checkout-price">
               Price : {Rupees(product.price)}
             </div>
