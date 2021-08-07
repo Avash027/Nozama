@@ -1,24 +1,16 @@
 import { screen, render } from "@testing-library/react";
-
+import { useReducer } from "react";
 import AddProduct from "../AddProduct";
-
+import { initialState, reducer } from "../../../utils/ProductAddReducer";
 const mockFn = jest.fn();
 
 const MockAddProduct = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     <AddProduct
-      name={""}
-      setName={mockFn}
-      brand={""}
-      setBrand={mockFn}
-      category={""}
-      setCategory={mockFn}
-      description={""}
-      setDescription={mockFn}
-      price={0}
-      setPrice={""}
-      stock={0}
-      setStock={mockFn}
+      state={state}
+      dispatch={dispatch}
       convertImageToBase64={mockFn}
       AddProductSubmitHandler={mockFn}
     ></AddProduct>

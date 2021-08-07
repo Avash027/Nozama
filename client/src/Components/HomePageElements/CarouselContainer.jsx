@@ -1,3 +1,4 @@
+import { memo } from "react";
 import CarouselElements from "./CarouselElements";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -24,4 +25,4 @@ const CarouselContainer = ({ products }) => {
   );
 };
 
-export default CarouselContainer;
+export default memo(CarouselContainer);
